@@ -1,0 +1,53 @@
+.SignUp {
+  justify-content: center;
+  text-align: center;
+}
+
+.SignUp h1 {
+  font-family: "Neucha";
+}
+
+.SignUp div {
+  margin: 0.5rem;
+}
+
+.SignUpBox button,
+input {
+  border-radius: 6px;
+  background-color: transparent;
+  border: 2px solid var(--accent);
+  display: inline-block;
+  cursor: pointer;
+  color: #666666;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  width: 100%;
+  padding: 2px;
+  margin-top: 3px;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .SignUp {
+    margin: 0 8em;
+  }
+
+  .SignUpBox {
+    display: flex;
+    justify-content: center;
+  }
+
+  .SignUpBox input {
+    width: 80%;
+    margin-left: 3rem;
+    max-width: 500px;
+  }
+
+  .SignUpBox button {
+    width: 20%;
+    margin-right: 3rem;
+    max-width: 200px;
+  }
+}

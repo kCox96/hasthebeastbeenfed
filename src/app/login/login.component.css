@@ -1,0 +1,21 @@
+.Forms {
+  margin: 2px 16px;
+}
+
+.Forms button,
+input {
+  border-radius: 6px;
+  background-color: transparent;
+  border: 2px solid var(--accent);
+  display: inline-block;
+  cursor: pointer;
+  color: #666666;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  width: 100%;
+  padding: 2px;
+  margin-top: 3px;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+}
