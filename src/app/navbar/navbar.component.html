@@ -1,0 +1,20 @@
+<header>
+  <nav></nav>
+  <!-- Top Navigation Menu -->
+  <div class="topnav">
+    <div class="header-logobar">
+      <div id="logo"><img src="../../assets/Cat.png" /></div>
+      <div class="fancy">Has The Beast Been Fed?</div>
+    </div>
+
+    <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+    <a (click)="shouldShow = !shouldShow" class="icon">
+      <img src="../../assets/bars-solid.svg" alt="" />
+    </a>
+    <!-- Navigation links (hidden by default) -->
+    <div id="myLinks" [ngClass]="{ show: shouldShow }">
+      <a href="">Login</a>
+      <a href="">Sign Up</a>
+    </div>
+  </div>
+</header>
