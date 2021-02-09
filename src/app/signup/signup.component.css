@@ -1,8 +1,8 @@
-.Forms {
+form {
   margin: 2px 16px;
 }
 
-.Forms button,
+form button,
 input {
   border-radius: 6px;
   background-color: transparent;

@@ -1,7 +1,27 @@
-<div class="Forms">
+<!-- <div class="Forms">
   <input type="email" name="" id="email" Placeholder="Email Address" />
   <input type="text" name="" id="username" Placeholder="Username" />
   <input type="password" name="" id="pass1" Placeholder="Password" />
   <input type="password" name="" id="pass2" Placeholder="Password" />
   <button type="submit">Submit</button>
-</div>
+</div> -->
+
+<form (submit)="register()">
+  <div class="form-group">
+    <label for="name">Full name</label>
+    <input type="text" class="form-control" name="name" placeholder="Enter your name" [(ngModel)]="credentials.name" id="username">
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" name="email" placeholder="Enter email" [(ngModel)]="credentials.email" id="email">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="credentials.password" id="pass1">
+  </div>
+  <div class="form-group">
+    <label for="password">Repeat Password</label>
+    <input type="password" class="form-control" name="password" placeholder="Password" id="pass2">
+  </div>
+  <button type="submit" class="btn btn-default">Register!</button>
+</form>
