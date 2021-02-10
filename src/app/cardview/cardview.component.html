@@ -1,1 +1,3 @@
-<p>cardview works!</p>
+<app-card *ngIf="cats.length" [cats]="cats"></app-card>
+
+<app-addcat *ngIf="!cats.length"></app-addcat>

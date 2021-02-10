@@ -11,6 +11,8 @@ import { AccountComponent } from './account/account.component';
 import { CardviewComponent } from './cardview/cardview.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
+import { CardComponent } from './cardview/card/card.component';
+import { AddcatComponent } from './cardview/addcat/addcat.component';
 
 const routes: Routes = [];
 
@@ -23,6 +25,8 @@ const routes: Routes = [];
     SignupComponent,
     AccountComponent,
     CardviewComponent,
+    CardComponent,
+    AddcatComponent,
   ],
   imports: [
     BrowserModule,
