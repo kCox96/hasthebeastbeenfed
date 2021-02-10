@@ -11,11 +11,16 @@ var auth = jwt({
 var ctrlProfile = require('../controllers/profile');
 var ctrlAuth = require('../controllers/authentication');
 
-// profile
-router.get('/profile', auth, ctrlProfile.profileRead);
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
+// homepage
+router.get('/home', auth, ctrlProfile.profileRead);
 
 // authentication
-router.post('/register', ctrlAuth.register);
+router.post('/signup', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
 module.exports = router;
