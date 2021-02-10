@@ -7,6 +7,7 @@ import { ICat } from 'src/app/interface';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
+  //passing gets cat object from cardview
   private _cats: ICat[] = [];
   @Input() get cats(): ICat[] {
     return this._cats;
