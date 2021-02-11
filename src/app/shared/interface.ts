@@ -1,4 +1,4 @@
-export interface ICat {
+export interface ICats {
   _id: string;
   name: string;
   feedingTimes: IFeed[];

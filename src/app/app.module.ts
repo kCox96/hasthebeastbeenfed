@@ -13,6 +13,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { CardComponent } from './cardview/card/card.component';
 import { AddcatComponent } from './cardview/addcat/addcat.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DataService } from './shared/data.service';
 
 const routes: Routes = [];
 
@@ -33,8 +35,9 @@ const routes: Routes = [];
     NgbModule,
     AppRoutingModule,
     RouterModule.forRoot(routes),
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
