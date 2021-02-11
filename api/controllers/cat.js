@@ -8,11 +8,15 @@ module.exports.getCats = async function (req, res) {
   var ObjectId = mongoose.Types.ObjectId;
 
   // find the cats in the db
-  Cat.find({ "users.userId": new ObjectId(userId) })
-    .lean()
+  var query = Cat.find();
+  query.setOptions({ lean: true });
+  query
+    .where("users.userId")
+    .equals(new ObjectId(userId))
     .exec(function (err, cats) {
       // log error if present
       if (err) return console.error(err);
+      res.status(500);
       // all good, return 200 and the data
       res.status(200);
       res.send(cats);
@@ -73,7 +77,7 @@ module.exports.createCat = async function (req, res) {
   cat.users.userId = req.params.userId;
 
   // save to the DB and return an error/success message to the console
-  Cat.save(function (err, cat) {
+  cat.save(function (err, cat) {
     // log error if present
     if (err) return console.error(err);
     // all good, return 200 and log success
