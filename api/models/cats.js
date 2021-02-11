@@ -1,25 +1,31 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const feedingTimesSubSchema = new Schema({
-  time: {
-    type: Date,
-    required: false,
+const feedingTimesSubSchema = new Schema(
+  {
+    time: {
+      type: Date,
+      required: false,
+    },
+    foodType: {
+      type: String,
+      required: false,
+      min: 3,
+      max: 255,
+    },
   },
-  foodType: {
-    type: String,
-    required: false,
-    min: 3,
-    max: 255,
-  },
-});
+  { _id: false }
+);
 
-const userIdSubSchema = new Schema({
-  userId: {
-    type: mongoose.Types.ObjectId,
-    required: true,
+const userIdSubSchema = new Schema(
+  {
+    userId: {
+      type: mongoose.Types.ObjectId,
+      required: true,
+    },
   },
-});
+  { _id: false }
+);
 
 const catSchema = new Schema({
   name: {
