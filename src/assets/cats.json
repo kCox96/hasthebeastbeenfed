@@ -1,0 +1,44 @@
+[
+  {
+    "_id": "601d6461697aa12b85ee743b",
+    "name": "Mr Bigglesworth",
+    "feedingTimes": [
+      {
+        "time": "2020-02-01T17:00:00Z",
+        "foodType": "dry"
+      }
+    ],
+    "users": [
+      {
+        "userId": "601d5d6d9fa0736f50095003"
+      },
+      {
+        "userId": "60229079c33cf65847e6937d"
+      },
+      {
+        "userId": "601d5c380a6fa16da56ff1be"
+      }
+    ]
+  },
+  {
+    "_id": "601d6461697aa12b85ee744b",
+    "name": "Snuggles",
+    "feedingTimes": [
+      {
+        "time": "2020-02-01T17:00:00Z",
+        "foodType": "dry"
+      }
+    ],
+    "users": [
+      {
+        "userId": "601d5d6d9fa0736f50095003"
+      },
+      {
+        "userId": "60229079c33cf65847e6937d"
+      },
+      {
+        "userId": "601d5c380a6fa16da56ff1be"
+      }
+    ]
+  }
+]
