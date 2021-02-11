@@ -16,7 +16,7 @@ const feedingTimesSubSchema = new Schema({
 
 const userIdSubSchema = new Schema({
   userId: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Types.ObjectId,
     required: true,
   },
 });
