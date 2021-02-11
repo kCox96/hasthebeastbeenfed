@@ -11,7 +11,7 @@ var passport = require("passport");
 // [SH] Bring in the data model
 require("./api/models/db");
 // [SH] Bring in the Passport config after model is defined
-require("./api/config/passport");
+
 
 // [SH] Bring in the routes for the API (delete the default routes)
 var routesApi = require("./api/routes/index");
@@ -32,8 +32,6 @@ app.use(cookieParser());
 app.use(cors());
 app.use(router);
 
-// [SH] Initialise Passport before using the route middleware
-app.use(passport.initialize());
 
 // [SH] Use the API routes when path starts with /api
 app.use("/api", routesApi);

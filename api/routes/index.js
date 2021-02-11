@@ -1,13 +1,8 @@
 var express = require("express");
 var router = express.Router();
-var jwt = require("express-jwt");
-var auth = jwt({
-  secret: "MY_SECRET",
-  userProperty: "payload",
-  algorithms: ["sha1", "RS256", "HS256"],
-});
 
-var ctrlProfile = require("../controllers/profile");
+
+
 var ctrlAuth = require("../controllers/authentication");
 var ctrlCat = require("../controllers/cat");
 
@@ -16,12 +11,9 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
 
-// homepage route
-router.get("/home", auth, ctrlProfile.profileRead);
-
 // authentication routes
-router.post("/signup", ctrlAuth.register);
-router.post("/login", ctrlAuth.login);
+router.post("/api/signup", ctrlAuth.createUser);
+// router.post("/login", ctrlAuth.login);
 
 // cat routes
 router.get("/api/cats/:userId", ctrlCat.getCats);
