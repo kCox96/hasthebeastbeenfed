@@ -1,5 +1,17 @@
-<div class="Forms">
+<!-- <div class="Forms">
   <input type="text" name="" id="username" Placeholder="Username" />
   <input type="password" name="" id="pass1" Placeholder="Password" />
   <button type="submit">Submit</button>
-</div>
+</div> -->
+
+<form (submit)="login()">
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" name="email" placeholder="Enter email" [(ngModel)]="credentials.email" id="email">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="credentials.password" id="pass1">
+  </div>
+  <button type="submit" class="btn btn-default">Sign in!</button>
+</form>

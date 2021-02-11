@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
-
+import { RouterModule} from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -15,8 +15,7 @@ import { CardComponent } from './cardview/card/card.component';
 import { AddcatComponent } from './cardview/card/addcat/addcat.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './shared/data.service';
-
-const routes: Routes = [];
+import { AuthenticationService } from './authentication.service';
 
 @NgModule({
   declarations: [
@@ -34,10 +33,10 @@ const routes: Routes = [];
     BrowserModule,
     NgbModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes),
     HttpClientModule,
-  ],
-  providers: [DataService],
+    RouterModule.forRoot([]),
+    FormsModule,  ],
+  providers: [AuthenticationService, DataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
