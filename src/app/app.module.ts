@@ -12,7 +12,7 @@ import { CardviewComponent } from './cardview/cardview.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { CardComponent } from './cardview/card/card.component';
-import { AddcatComponent } from './cardview/addcat/addcat.component';
+import { AddcatComponent } from './cardview/card/addcat/addcat.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './shared/data.service';
 

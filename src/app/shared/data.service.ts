@@ -12,7 +12,8 @@ export class DataService {
 
   constructor(private http: HttpClient) {}
 
-  getCats(id: number): Observable<ICats[]> {
+  // Get cats for user with id
+  getCats(id: string): Observable<ICats[]> {
     return this.http
       .get<ICats[]>(this.baseUrl + 'cats.json')
       .pipe(catchError(this.handleError));

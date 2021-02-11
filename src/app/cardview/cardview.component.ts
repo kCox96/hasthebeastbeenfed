@@ -17,7 +17,7 @@ export class CardviewComponent {
 
   ngOnInit() {
     this.dataService
-      .getCats(562346672)
+      .getCats('562346672')
       .subscribe((cats: ICats[]) => (this.cats = cats));
     this.title = JSON.stringify(this.cats);
   }
