@@ -1,0 +1,23 @@
+<div *ngFor="let cat of cats" class="card">
+  <div class="card-top">
+    <img src="../../../assets/pencil.svg" alt="" />
+    <div>{{ cat.name }}</div>
+    <img src="../../../assets/dots.svg" alt="" />
+  </div>
+  <div class="card-content">
+    <div class="card-image">
+      <img src="../../../assets/kitten.jpeg" alt="" />
+    </div>
+    <div>
+      Last Fed: {{ cat.feedingTimes[cat.feedingTimes.length - 1].time }}
+    </div>
+    <div>
+      Food Type: {{ cat.feedingTimes[cat.feedingTimes.length - 1].foodType }}
+    </div>
+  </div>
+  <div class="card-bottom">
+    <button type="submit">Feed Me</button>
+  </div>
+</div>
+
+<app-addcat class="card"></app-addcat>

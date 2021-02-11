@@ -23,6 +23,8 @@
     "@ng-bootstrap/ng-bootstrap": "^9.0.2",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.0",
+    "rxjs": "^6.6.3",
+    "rxjs-compat": "^6.6.3",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -32,7 +34,6 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "mongoose": "^5.11.15",
-    "rxjs": "~6.6.0",
     "serve-favicon": "^2.5.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
