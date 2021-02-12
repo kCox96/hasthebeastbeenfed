@@ -1,0 +1,8 @@
+.footer {
+  background-color: var(--base);
+  height: 2.5rem;
+}
+
+.footer-links {
+  right: 0;
+}

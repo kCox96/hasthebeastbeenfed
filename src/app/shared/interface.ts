@@ -1,8 +1,15 @@
 export interface ICats {
   _id: string;
   name: string;
+  feedingTimes: IFeed;
+  users: IUserID[];
+}
+
+export interface ICat {
+  _id: string;
+  name: string;
   feedingTimes: IFeed[];
-  users: IUserIDs[];
+  users: IUserID[];
 }
 
 export interface IFeed {
@@ -10,6 +17,6 @@ export interface IFeed {
   foodType?: string;
 }
 
-export interface IUserIDs {
+export interface IUserID {
   userId: string;
 }
