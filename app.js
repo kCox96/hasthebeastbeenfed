@@ -35,8 +35,7 @@ app.use(router);
 // [SH] Use the API routes when path starts with /api
 app.use("/api", routesApi);
 // protect route with token
-// app.use("/api/cats", verifyToken, <protectedRoutesImport>)
-
+// app.use("/api/cats", verifyToken); 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err = new Error("Not Found");

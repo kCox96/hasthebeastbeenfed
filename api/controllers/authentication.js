@@ -51,24 +51,22 @@ const User = mongoose.model('User');
      // search database for user using email
      const user = await User.findOne({email: req.body.email});
      // if can't find user return error
-     if (!user) {
-      res.send("Email cannot be found");
-      res.status(400);
-      return console.error(err);
-     }
+     if (!user) return res.status(400).json({ error: "Email is wrong" });
+
 
      // check password is valid 
      const validPassword = await bcrpyt.compare(req.body.password, user.password);
      // if password isn't valid, return error
-     if (!validPassword) {
-       res.send("Password is wrong");
-       res.status(400);
-       return console.error(err);
-     }
+      if (!validPassword)
+      return res.status(400).json({ error: "Password is wrong" });
 
      // all good, return 200 and log success
-     res.status(200);
-     res.send("login successful");
+    //  res.json({
+    //   error: null,
+    //   data: {
+    //     message: "Login successful",
+    //   },
+    // });
 
      // create jwt token
      const token = jwt.sign(
