@@ -12,6 +12,7 @@ body {
   color: var(--accent);
 }
 
+input,
 button {
   border-radius: 6px;
   background-color: transparent;

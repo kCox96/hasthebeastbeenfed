@@ -1,0 +1,18 @@
+.addcat,
+.addplus {
+  width: 25%;
+}
+
+.cataddtext {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.catadd {
+  background-color: var(--base);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
