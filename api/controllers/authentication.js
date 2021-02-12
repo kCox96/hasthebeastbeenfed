@@ -1,4 +1,5 @@
-const bcrpyt = require("bcrypt")
+const bcrpyt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const mongoose = require('mongoose');
 const { signupValidation, loginValidation } = require("./validation");
 const User = mongoose.model('User');
@@ -23,7 +24,7 @@ const User = mongoose.model('User');
     user.password = password; 
 
     // save to the DB and return an error/success message to console
-    const userData = await user.save(function (err, user) {
+    await user.save(function (err, user) {
       // log error if present
       if (err) {
         res.status(400);
@@ -37,9 +38,7 @@ const User = mongoose.model('User');
       res.send("complete");
   
     });
-  };
-
- 
+  }; 
   /**
    *  Login controller
    */
@@ -71,5 +70,21 @@ const User = mongoose.model('User');
      res.status(200);
      res.send("login successful");
 
-   }
+     // create jwt token
+     const token = jwt.sign(
+       // payload data
+       {
+         name: user.username,
+         id: user._id,
+       },
+       process.env.TOKEN_SECRET
+     );
+     res.header("auth-token", token).json({
+       error: null,
+       data : {
+         token,
+       }
+     });
+
+   };
 
