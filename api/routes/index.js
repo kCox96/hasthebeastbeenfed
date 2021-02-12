@@ -13,7 +13,7 @@ router.get("/", function (req, res, next) {
 
 // authentication routes
 router.post("/api/signup", ctrlAuth.createUser);
-// router.post("/login", ctrlAuth.login);
+router.post("/api/login", ctrlAuth.login);
 
 // cat routes
 router.get("/api/cats/:userId", ctrlCat.getCats);
