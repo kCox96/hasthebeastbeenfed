@@ -1,10 +1,11 @@
 var mongoose = require("mongoose");
 var gracefulShutdown;
+const dotenv = require("dotenv");
 var dbURI = "mongodb://localhost:27017/htbbf";
 if (process.env.NODE_ENV === "production") {
   dbURI = process.env.MONGOLAB_URI;
 }
-
+dotenv.config();
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // CONNECTION EVENTS
