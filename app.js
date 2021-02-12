@@ -14,7 +14,7 @@ require("./api/models/db");
 // [SH] Bring in the routes for the API (delete the default routes)
 var routesApi = require("./api/routes/index");
 const router = require("./api/routes/index");
-const verifyToken = require("./api/controllers/validateToken");
+const validate = require("./api/controllers/validateToken");
 
 var app = express();
 
@@ -35,7 +35,7 @@ app.use(router);
 // [SH] Use the API routes when path starts with /api
 app.use("/api", routesApi);
 // protect route with token
-// app.use("/api/cats", verifyToken); 
+app.use("/api/cats", validate.verifyToken); 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err = new Error("Not Found");
