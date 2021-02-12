@@ -1,5 +1,6 @@
 const bcrpyt = require("bcrypt")
 const mongoose = require('mongoose');
+const { signupValidation } = require("./validation");
 const User = mongoose.model('User');
 
 /**
@@ -27,6 +28,10 @@ const User = mongoose.model('User');
 
   module.exports.createUser = async function (req, res) {
     var user = new User();
+    const { error } = signupValidation(req.body);
+    if (error) {
+      return res.status(400).json({error: error.details[0].message});
+    }
     // pull params from request
     user.username = req.body.username;
     user.email = req.body.email;
