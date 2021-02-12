@@ -65,29 +65,54 @@ const User = mongoose.model('User');
    *  Login controller
    */
 
-  module.exports.login = function(req, res) {
+   module.exports.login =  async function(req, res) {
+     // search database for user using email
+     const user = await User.findOne({email: req.body.email});
+     // if can't find user return error
+     if (!user) {
+      res.send("Email cannot be found");
+      res.status(400);
+      return console.error(err);
+     }
 
-    // Add error catching / input validation here 
-    passport.authenticate('local', function(err, user, info){
-      var token;
+     // check password is valid 
+     const validPassword = await bcrpyt.compare(req.body.password, user.password);
+     // if password isn't valid, return error
+     if (!validPassword) {
+       res.send("Password is wrong");
+       res.status(400);
+       return console.error(err);
+     }
+
+     // all good, return 200 and log success
+     res.status(200);
+     res.send("login successful");
+
+   }
+
+  // module.exports.login = function(req, res) {
+
+  //   // Add error catching / input validation here 
+  //   passport.authenticate('local', function(err, user, info){
+  //     var token;
   
-      // If Passport throws/catches an error
-      if (err) {
-        res.status(404).json(err);
-        return;
-      }
+  //     // If Passport throws/catches an error
+  //     if (err) {
+  //       res.status(404).json(err);
+  //       return;
+  //     }
   
-      // If a user is found
-      if(user){
-        token = user.generateJwt();
-        res.status(200);
-        res.json({
-          "token" : token
-        });
-      } else {
-        // If user is not found
-        res.status(401).json(info);
-      }
-    })(req, res);
+  //     // If a user is found
+  //     if(user){
+  //       token = user.generateJwt();
+  //       res.status(200);
+  //       res.json({
+  //         "token" : token
+  //       });
+  //     } else {
+  //       // If user is not found
+  //       res.status(401).json(info);
+  //     }
+  //   })(req, res);
   
-  };
+  // };
