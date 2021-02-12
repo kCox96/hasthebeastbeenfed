@@ -1,4 +1,4 @@
-
+const bcrpyt = require("bcrypt")
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
@@ -26,26 +26,28 @@ const User = mongoose.model('User');
   // };
 
   module.exports.createUser = async function (req, res) {
-    console.log("breakpoint");
     var user = new User();
     // pull params from request
     user.username = req.body.username;
     user.email = req.body.email;
-    user.password = req.body.password; 
+    // hash the password
+    const salt = await bcrpyt.genSalt(10);
+    const password = await bcrpyt.hash(req.body.password, salt);
+    user.password = password; 
+
     // save to the DB and return an error/success message to console
-    
-    user.save(function (err, user) {
+    const userData = await user.save(function (err, user) {
       // log error if present
       if (err) {
         res.status(400);
         res.send(err);
-        console.log("error log");
         return console.error(err);
         
       }
       // all good, return 200 and log success 
       res.status(200)
-      res.send("Complete");
+      // FOR DEBUGGING
+      res.send("complete");
   
     });
   };
