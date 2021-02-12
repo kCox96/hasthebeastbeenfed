@@ -1,8 +1,6 @@
 var express = require("express");
 var router = express.Router();
 
-
-
 var ctrlAuth = require("../controllers/authentication");
 var ctrlCat = require("../controllers/cat");
 
