@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const crypto = require("crypto");
 const mongoose = require("mongoose");
 
 
@@ -7,25 +6,21 @@ const userSchema = new mongoose.Schema({
 
   username: {
     type: String,
-    unique: true,
     required: true,
   },
   email: {
     type: String,
+    unique: true,
     required: true,
   },
   password: {
    type: String, 
-   required: true
+   required: true,
+   min: 6, 
+   max: 1024,
   },
 });
 
-// userSchema.methods.setPassword = function (password) {
-//   this.salt = crypto.randomBytes(16).toString("hex");
-//   this.hash = crypto
-//     .pbkdf2Sync(password, this.salt, 1000, 64, "sha512")
-//     .toString("hex");
-// };
 
 // userSchema.methods.validPassword = function (password) {
 //   var hash = crypto
