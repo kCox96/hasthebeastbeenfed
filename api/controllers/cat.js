@@ -142,13 +142,13 @@ module.exports.getAllFeedingTimes = async function (req, res) {
  * @response 500 - Error
  */
 module.exports.createCat = async function (req, res) {
-  // create an instance of the cat Mongoose data model
-  var cat = new Cat();
-
-  // get parameters from the request for storage in the database
-  cat.users.userId = req.params.userId;
-  cat.name = req.body.name;
-  cat.feedingTimes = []; // create an empty array of feedingTimes to be updated later
+  // get params from request
+  var userId = req.params.userId;
+  var name = req.body.name;
+  // create empty array for feedingTimes
+  var feedingTimes = [];
+  // create an instance of a mongoose ObjectId to be used in the query
+  var ObjectId = mongoose.Types.ObjectId;
 
   // if the userId provided in the request isn't valid return an error
   if (!isValidObjectId(userId)) {
@@ -157,8 +157,16 @@ module.exports.createCat = async function (req, res) {
     return;
   } // userId is valid - let's carry on
 
+  var query = [
+    {
+      name: name,
+      feedingTimes: feedingTimes,
+      users: { userId: new ObjectId(userId) },
+    },
+  ];
+
   // save the instance of the cat data model to the database
-  cat.save(function (err, cat) {
+  Cat.create(query, function (err, cat) {
     // return 500 and error if something went wrong
     if (err) {
       res.status(500).send(err);
