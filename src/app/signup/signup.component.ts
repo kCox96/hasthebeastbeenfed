@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../authentication.service';
-import { TokenPayload } from '../models/tokenpayload.model';
+import { AuthenticationService } from '../shared/authentication.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -9,23 +9,33 @@ import { TokenPayload } from '../models/tokenpayload.model';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  credentials: TokenPayload = {
-    email: '',
-    name: '',
-    password: ''
+  form: any = {
+    username: null, 
+    email: null, 
+    password: null, 
   };
-  
-  constructor(private auth: AuthenticationService, private router: Router) {}
 
-  register() {
-    this.auth.register(this.credentials).subscribe(() => {
-      this.router.navigateByUrl('/profile');
-    }, (err) => {
-      console.error(err);
-    });
-  }
+  isSuccessful = false; 
+  isSignUpFailed = false;
+  errorMessage = '';
+  constructor(private auth: AuthenticationService) {}
 
   ngOnInit(): void {
+  }
+
+  onSubmit() : void {
+    const { username, email, password } = this.form; 
+    this.auth.signup(username, email, password).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true; 
+        this.isSignUpFailed = false;
+      },
+      err => {
+        this.errorMessage = err.error.errorMessage;
+        this.isSignUpFailed = true; 
+      }
+    );
   }
 
 }

@@ -69,16 +69,26 @@ const User = mongoose.model('User');
     // });
 
      // create jwt token
-     const token = jwt.sign(
+     const token =  jwt.sign(
        // payload data
        {
          name: user.username,
          id: user._id,
        },
-       process.env.TOKEN_SECRET
+       process.env.TOKEN_SECRET,
+     
+
      );
+
+     // set token session in the HTTP Response body
+//       res.status(200).json({
+//       idToken: jwtBearerToken, 
+//       expiresIn: 300
+// });
+
      res.header("auth-token", token).json({
        error: null,
+       // FOR DEBUGGING - REMOVE BEFORE SUBMIT
        data : {
          token,
        }
