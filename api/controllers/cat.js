@@ -197,6 +197,9 @@ module.exports.updateCatUsers = async function (req, res) {
   var query = { _id: new ObjectId(id) };
   // build the update part of the query to update the cat document with the userId
   var update = { $push: { users: { userId: userId } } };
+  // build the query options to not upsert (i.e. create a new document if one doesn't exist)
+  // and return the modified document on completion
+  var options = { upsert: false, new: true };
 
   // if the _id or userId provided in the request isn't valid return an error
   if (!isValidObjectId(id) || !isValidObjectId(userId)) {
@@ -206,7 +209,7 @@ module.exports.updateCatUsers = async function (req, res) {
   } // _id and userId are valid - let's carry on
 
   // execute the query
-  Cat.findOneAndUpdate(query, update, { upsert: true }, function (err, cat) {
+  Cat.findOneAndUpdate(query, update, options, function (err, cat) {
     // return 500 and error if something went wrong
     if (err) {
       res.status(500).send(err);
@@ -239,6 +242,9 @@ module.exports.updateCatFeedingTimes = async function (req, res) {
       feedingTimes: { time: req.body.time, foodType: req.body.foodType },
     },
   };
+  // build the query options to not upsert (i.e. create a new document if one doesn't exist)
+  // and return the modified document on completion
+  var options = { upsert: false, new: true };
 
   // if the _id provided in the request isn't valid return an error
   if (!isValidObjectId(id)) {
@@ -248,7 +254,7 @@ module.exports.updateCatFeedingTimes = async function (req, res) {
   } // _id is valid - let's carry on
 
   // execute the query
-  Cat.findOneAndUpdate(query, update, { upsert: true }, function (err, cat) {
+  Cat.findOneAndUpdate(query, update, options, function (err, cat) {
     // return 500 and error if something went wrong
     if (err) {
       res.status(500).send(err);
