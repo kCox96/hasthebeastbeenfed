@@ -24,10 +24,13 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() : void {
+     // DEBUGGING - REMOVE BEFORE SUBMISSION 
+     console.log("signup on submit called");
     const { username, email, password } = this.form; 
     this.auth.signup(username, email, password).subscribe(
       data => {
-        console.log(data);
+        //DEBUGGING - REMOVE BEFORE SUBMISSION
+        console.log("login submit request data" + JSON.stringify(data));
         this.isSuccessful = true; 
         this.isSignUpFailed = false;
       },

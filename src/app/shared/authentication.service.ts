@@ -24,12 +24,16 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string): Observable<any>{
+    // DEBUGGING - REMOVE BEFORE SUBMISSION
+    console.log("authentication service - login post called");
     return this.http.post<UserLogin>(AUTH_BASE + 'login', {
       email,
       password }, httpOptions);
     }
 
     signup(username:string,email:string,password:string): Observable<any> {
+          // DEBUGGING - REMOVE BEFORE SUBMISSION
+      console.log("authentication service - signup called");
       return this.http.post(AUTH_BASE + 'signup', {
         username,
         email,
