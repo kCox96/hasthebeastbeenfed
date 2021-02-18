@@ -13,8 +13,9 @@
     </a>
     <!-- Navigation links (hidden by default) -->
     <div id="myLinks" [ngClass]="{ show: shouldShow }">
-      <a href="/login">Login</a>
-      <a href="/signup">Sign Up</a>
+      <a *ngIf="!loggedIn" href="/login">Login</a>
+      <a *ngIf="!loggedIn" href="/signup">Sign Up</a>
+      <button *ngIf="isLoggedIn$ | async" (click)="onSignOut()">Signout</button>
     </div>
   </div>
 </header>

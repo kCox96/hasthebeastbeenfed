@@ -1,3 +1,5 @@
+<span class="alert alert-success" *ngIf="logoutMessage.length > 0">{{ logoutMessage }}</span>
+<span class="alert alert-success" *ngIf="infoMessage.length > 0">{{ infoMessage }}</span>
 <form
      
       name="form"
@@ -44,11 +46,9 @@
       </div>
 
       <div class="alert alert-warning" *ngIf="f.submitted && isLoginFailed">
-        Loginfailed!<br />{{ errorMessage }}
+        Login failed!<br />{{ errorMessage }}
       </div>
     </form>
 
-    <div class="alert alert-success" *ngIf="isLoggedIn">
-      Your Login is successful!
-    </div>
+    
   

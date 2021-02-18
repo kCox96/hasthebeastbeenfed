@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../shared/authentication.service';
 import { TokenStorageService } from '../shared/token-storage.service';
 
@@ -17,15 +17,29 @@ export class LoginComponent implements OnInit {
 
   isLoggedIn = false;
   isLoginFailed = false;
-  errorMessage = ''
-
+  errorMessage = '';
+  infoMessage = '';
+  logoutMessage = '';
   
-  constructor(private auth: AuthenticationService, private tokenStorage: TokenStorageService, private router: Router) {}
+  constructor(private auth: AuthenticationService, private tokenStorage: TokenStorageService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     if(this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
     }
+    this.route.queryParams
+    .subscribe(params => {
+      if(params.registered !== undefined && params.registered === 'true') {
+          this.infoMessage = 'Registration Successful! Please Login!';
+      }
+    });
+
+    this.route.queryParams
+    .subscribe(params => {
+      if(params.signedOut !== undefined && params.signedOut === 'true') {
+          this.logoutMessage = 'Your signout has been successful!';
+      }
+    });
   }
 
   onSubmit(): void {
@@ -36,14 +50,15 @@ export class LoginComponent implements OnInit {
       data => {
         // DEBUGGING - REMOVE BEFORE SUBMISSION
         console.log("login data" + JSON.stringify(data));
+
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
         
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-       this.reloadPage();
+        // this.reloadPage();
 
-        this.router.navigateByUrl('/account');
+        this.router.navigate(['account']);
       },
       err => {
         this.errorMessage = err.error.message;

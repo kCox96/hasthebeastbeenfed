@@ -1,3 +1,9 @@
 form {
   margin: 2px 16px;
 }
+
+span {
+  margin: 10px;
+  text-align: center;
+  display: block;
+}

@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
   isSuccessful = false; 
   isSignUpFailed = false;
   errorMessage = '';
-  constructor(private auth: AuthenticationService) {}
+  constructor(private auth: AuthenticationService, private router: Router) {}
 
   ngOnInit(): void {
   }
@@ -39,6 +39,7 @@ export class SignupComponent implements OnInit {
         this.isSignUpFailed = true; 
       }
     );
+    this.router.navigate(['login'], {queryParams : { registered: 'true'}});
   }
 
 }

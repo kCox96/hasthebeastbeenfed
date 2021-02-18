@@ -4,7 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {  UserLogin } from '../models/userlogin.model';
 import { shareReplay } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { TokenStorageService } from './token-storage.service';
 
 const AUTH_BASE = 'http://localhost:3000/api/';
 const httpOptions = {
@@ -19,13 +20,19 @@ const httpOptions = {
 export class AuthenticationService {
 
   private token: string;
+  private isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private tokenService: TokenStorageService) {
+    if(tokenService.getToken() != null){
+      this.isLoggedIn.next(true);
+    }
+  }
 
   login(email: string, password: string): Observable<any>{
     // DEBUGGING - REMOVE BEFORE SUBMISSION
     console.log("authentication service - login post called");
+    this.isLoggedIn.next(true);
     return this.http.post<UserLogin>(AUTH_BASE + 'login', {
       email,
       password }, httpOptions);
@@ -39,6 +46,12 @@ export class AuthenticationService {
         email,
         password }, httpOptions);
       
+    }
+
+   public get isUserLoggedIn() {
+      //DEBUGGING - REMOVE BEFORE SUBMISSION
+      console.log("isUserLoggedIn called");
+      return this.isLoggedIn.asObservable();
     }
   }
 
