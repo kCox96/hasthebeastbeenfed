@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
       data => {
         // DEBUGGING - REMOVE BEFORE SUBMISSION
         console.log("login data" + JSON.stringify(data));
-
+        console.log("token value " + JSON.stringify(data));
         // Save token and user data using method defined in token service 
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
