@@ -13,8 +13,10 @@
     </a>
     <!-- Navigation links (hidden by default) -->
     <div id="myLinks" [ngClass]="{ show: shouldShow }">
+      <!-- If user logged in, hide login and signup links -->
       <a *ngIf="!loggedIn" href="/login">Login</a>
       <a *ngIf="!loggedIn" href="/signup">Sign Up</a>
+      <!-- Pipe observable value to subscribe to it -->
       <button *ngIf="isLoggedIn$ | async" (click)="onSignOut()">Signout</button>
     </div>
   </div>

@@ -16,41 +16,32 @@ export class NavbarComponent {
   }
   // Make sure to add the variable in the component
   public shouldShow = false;
+  // login check variables 
   public isLoggedIn$ = new Observable<boolean>(); 
   public loggedIn = false;
 
-  // ngOnInit(): void {
-  //   console.log("isSignedIn variable value" + this.isSignedIn);
-  //  // check if the user is signed in by searching if a token exists
-  //   if (!this.token.getToken() === null ){
-  //  // if token exists, display sign out link on navbar, remove signup and login links
-  //     this.isSignedIn = true;
-  //   }
-  //   // if token doesn't exist, display login and signup links
-  //   this.isSignedIn = false; 
-    
-  // }
-
+  // When component is initialised, subscribe to get method in auth service to run consistent checks
+  // about a user's login state
   ngOnInit(): void {
   this.isLoggedIn$ = this.auth.isUserLoggedIn;
   this.isLoggedIn$.subscribe((data: boolean) => {
       this.loggedIn = data; 
+      //DEBUGGING - REMOVE BEFORE SUBMISSION
       console.log(data);
   });
 
   }
 
   onSignOut (): void {
-    //DEBUGGING - REMOVE BEFORE SUBMISSION
-    
     this.token.signOut();
-
+    // take user to login page on logout 
     this.router.navigate(['login'], {queryParams: {signedOut: 'true'}});
+     //DEBUGGING - REMOVE BEFORE SUBMISSION
     this.reloadPage();
 
     
   }
-
+  //DEBUGGING METHOD - REMOVE BEFORE SUBMISSION
   reloadPage(): void {
     window.location.reload();
   }

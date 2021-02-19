@@ -76,6 +76,7 @@ const User = mongoose.model('User');
          id: user._id,
        },
        process.env.TOKEN_SECRET,
+       { expiresIn: '30s'}
      
 
      );

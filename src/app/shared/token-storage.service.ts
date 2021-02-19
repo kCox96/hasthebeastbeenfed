@@ -27,6 +27,7 @@ export class TokenStorageService {
   public saveToken(token: string): void {
     // DEBUGGING - REMOVE BEFORE SUBMISSION
     console.log("Token storage - saveToken called");
+    // replace current token wiht most recent token
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
   }
@@ -60,6 +61,8 @@ export class TokenStorageService {
     console.log("Token storage - saveUser called");
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+    // DEBUGGING - REMOVE BEFORE SUBMISSION
+    console.log("user data " + JSON.stringify(user));
   }
 
   public getUser(): any {

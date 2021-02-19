@@ -9,6 +9,7 @@ import { AuthenticationService } from '../shared/authentication.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  // set form variables
   form: any = {
     username: null, 
     email: null, 
@@ -25,7 +26,8 @@ export class SignupComponent implements OnInit {
 
   onSubmit() : void {
      // DEBUGGING - REMOVE BEFORE SUBMISSION 
-     console.log("signup on submit called");
+     
+    console.log("signup on submit called");
     const { username, email, password } = this.form; 
     this.auth.signup(username, email, password).subscribe(
       data => {
@@ -39,6 +41,7 @@ export class SignupComponent implements OnInit {
         this.isSignUpFailed = true; 
       }
     );
+    // redirect user to login after creating account 
     this.router.navigate(['login'], {queryParams : { registered: 'true'}});
   }
 
