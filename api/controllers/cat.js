@@ -183,6 +183,7 @@ module.exports.createCat = async function (req, res) {
  * @param {_id} req
  * @body {userId} - the userId to update the cat document with
  * @response 200 - OK
+ * @response 400 - userId is already associated with the cat document
  * @response 500 - Error
  */
 module.exports.updateCatUsers = async function (req, res) {
@@ -194,12 +195,16 @@ module.exports.updateCatUsers = async function (req, res) {
   var ObjectId = mongoose.Types.ObjectId;
 
   // build the query to find the targeted cat document
-  var query = { _id: new ObjectId(id) };
+  var updateQuery = {
+    _id: new ObjectId(id),
+  };
   // build the update part of the query to update the cat document with the userId
-  var update = { $push: { users: { userId: userId } } };
+  var updateContent = {
+    $addToSet: { users: { userId: new ObjectId(userId) } },
+  };
   // build the query options to not upsert (i.e. create a new document if one doesn't exist)
   // and return the modified document on completion
-  var options = { upsert: false, new: true };
+  var updateOptions = { upsert: false, new: true };
 
   // if the _id or userId provided in the request isn't valid return an error
   if (!isValidObjectId(id) || !isValidObjectId(userId)) {
@@ -208,16 +213,44 @@ module.exports.updateCatUsers = async function (req, res) {
     return;
   } // _id and userId are valid - let's carry on
 
-  // execute the query
-  Cat.findOneAndUpdate(query, update, options, function (err, cat) {
-    // return 500 and error if something went wrong
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      // all good, return 200 and the data
-      res.status(200).send(cat);
-    }
-  });
+  // now validate the userId is not already associated with the cat
+  var query = Cat.find({ "users.userId": { $in: userId } });
+  // tell the db to return a lean JSON object rather than a
+  // full mongoose doc to improve performance
+  query.setOptions({ lean: true });
+  query
+    .where("_id") // Specify the Object to filter on
+    .equals(new ObjectId(id)) // Filter the query with the _id passed into the API call
+    .exec(function (err, cats) {
+      // execute the query
+      // return 500 and error if something went wrong
+      if (err) {
+        res.status(500).send(err);
+      }
+      // if the reply already includes the userId provided then return an error
+      if (JSON.stringify(cats).includes(userId)) {
+        res
+          .status(400)
+          .send("Error: userId provided is already associated with the cat");
+      }
+      // the userId isn't already associated with the cat - carry on and perform the update
+      else {
+        Cat.findByIdAndUpdate(
+          updateQuery,
+          updateContent,
+          updateOptions,
+          function (err, cat) {
+            // return 500 and error if something went wrong
+            if (err) {
+              res.status(500).send(err);
+            } else {
+              // all good, return 200 and the data
+              res.status(200).send(cat);
+            }
+          }
+        );
+      }
+    });
 };
 
 /**
@@ -254,7 +287,7 @@ module.exports.updateCatFeedingTimes = async function (req, res) {
   } // _id is valid - let's carry on
 
   // execute the query
-  Cat.findOneAndUpdate(query, update, options, function (err, cat) {
+  Cat.findByIdAndUpdate(query, update, options, function (err, cat) {
     // return 500 and error if something went wrong
     if (err) {
       res.status(500).send(err);
