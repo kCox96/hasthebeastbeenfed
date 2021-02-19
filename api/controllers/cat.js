@@ -321,7 +321,7 @@ module.exports.deleteCat = async function (req, res) {
   } // _id is valid - let's carry on
 
   // execute the query
-  Cat.findOneAndDelete(query, function (err, cat) {
+  Cat.findByIdAndDelete(query, function (err, cat) {
     // return 500 and error if something went wrong
     if (err) {
       res.status(500).send(err);
