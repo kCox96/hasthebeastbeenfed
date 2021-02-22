@@ -26,7 +26,7 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient, private router: Router, private tokenService: TokenStorageService) {
    // if token exists, set the user state to logged in 
-    if(tokenService.getToken() != null){
+    if(tokenService.getToken() !==  null){
       this.isLoggedIn.next(true);
     }
   }

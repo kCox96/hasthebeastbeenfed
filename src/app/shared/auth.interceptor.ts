@@ -24,7 +24,7 @@ export class AuthInterceptor implements HttpInterceptor {
         // DEBUGGING - REMOVE BEFORE SUBMISSION 
         console.log("Token value at intercept service " + token);
         // if token exists, append token to request header 
-        if (token != null){
+        if (token !== null){
             authReq = req.clone({headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token)});
         }
 
