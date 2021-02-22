@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
 
         // navigate user to account screen when they've logged in
-        this.router.navigate(['account']);
+        this.router.navigate(['cardview']);
         // this.reloadPage();
       },
       // error handling

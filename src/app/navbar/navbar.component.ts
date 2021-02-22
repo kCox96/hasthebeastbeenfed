@@ -34,17 +34,17 @@ export class NavbarComponent {
     });
 
     this.userData = this.token.getUser();
-    console.log('user data at navbar' + this.userData);
-    this.username = this.userData.name;
-    console.log(this.username);
+    if (this.userData !== null) {
+      console.log('user data at navbar' + this.userData);
+      this.username = this.userData.name;
+      console.log(this.username);
+    }
   }
 
   onSignOut(): void {
     this.token.signOut();
     // take user to login page on logout
     this.router.navigate(['login'], { queryParams: { signedOut: 'true' } });
-    //DEBUGGING - REMOVE BEFORE SUBMISSION
-    this.reloadPage();
   }
   //DEBUGGING METHOD - REMOVE BEFORE SUBMISSION
   reloadPage(): void {

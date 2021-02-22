@@ -1,0 +1,79 @@
+.card-container {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+}
+.carousel-control.left,
+.carousel-control.right {
+  background-image: none;
+}
+h1,
+h2 {
+  margin: 15px;
+}
+
+h3 {
+  margin: 5px;
+}
+.card {
+  width: 90%;
+  margin: 10px;
+  max-height: 500px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: white;
+  padding: 50px;
+  border-radius: 5%;
+  border-width: 2px;
+}
+
+.card-img-container {
+  display: flex;
+  justify-content: center;
+}
+
+.card-img-container img {
+  width: 100px;
+  height: 100px;
+  margin: 30px;
+}
+
+.card p {
+  margin: 20px;
+  font-size: 1.2em;
+}
+
+form {
+  margin: 2px 16px;
+}
+
+form button,
+input {
+  border-radius: 6px;
+  background-color: transparent;
+  border: 2px solid var(--accent);
+  display: inline-block;
+  cursor: pointer;
+  color: #666666;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  width: 100%;
+  padding: 2px;
+  margin-top: 3px;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+}
+
+span {
+  margin: 10px;
+  text-align: center;
+  display: block;
+}
+
+.get-started-header {
+  font-size: 30px;
+  text-align: center;
+  margin: 20px;
+}
