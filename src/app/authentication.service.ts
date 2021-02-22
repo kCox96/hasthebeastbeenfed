@@ -9,23 +9,28 @@ import { TokenResponse } from './models/tokenresponse.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
-
   private token: string;
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  private request(method: 'post'|'get', type: 'login'|'signup'|'home', user?: TokenPayload): Observable<any> {
+  private request(
+    method: 'post' | 'get',
+    type: 'login' | 'signup' | 'home',
+    user?: TokenPayload
+  ): Observable<any> {
     let base;
-  
+
     if (method === 'post') {
       base = this.http.post(`/api/${type}`, user);
     } else {
-      base = this.http.get(`/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
+      base = this.http.get(`/api/${type}`, {
+        headers: { Authorization: `Bearer ${this.getToken()}` },
+      });
     }
-  
+
     const request = base.pipe(
       map((data: TokenResponse) => {
         if (data.token) {
@@ -34,16 +39,16 @@ export class AuthenticationService {
         return data;
       })
     );
-  
+
     return request;
   }
-  
+
   private saveToken(token: string): void {
     localStorage.setItem('mean-token', token);
     this.token = token;
   }
 
-  private getToken(): string {
+  public getToken(): string {
     if (!this.token) {
       this.token = localStorage.getItem('mean-token');
     }
@@ -80,13 +85,12 @@ export class AuthenticationService {
   public register(user: TokenPayload): Observable<any> {
     return this.request('post', 'signup', user);
   }
-  
+
   public login(user: TokenPayload): Observable<any> {
     return this.request('post', 'login', user);
   }
-  
+
   public profile(): Observable<any> {
     return this.request('get', 'home');
   }
-
 }
