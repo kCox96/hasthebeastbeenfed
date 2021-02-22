@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.3.
 
+The backend of this project was generated with [nodejs]() version 14.15.4, [express]() and [MongoDB]().
+
 ## Launching the App
 
 Run `npm install` at the root level to install all the needed dependencies.
@@ -9,6 +11,8 @@ Run `npm install` at the root level to install all the needed dependencies.
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 Run `npm start` for the node backend.
+
+## User Authentication
 
 ## Security Points
 

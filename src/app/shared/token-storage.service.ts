@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { of, Subscription } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import jwt_decode from 'jwt-decode';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -12,6 +13,7 @@ const USER_KEY = 'auth-user';
 })
 export class TokenStorageService {
   timeout;
+  decoded;
   tokenSubscription = new Subscription();
   jwtHelper = new JwtHelperService();
 
@@ -42,6 +44,7 @@ export class TokenStorageService {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
     this.getTokenExpiry(token);
+    // this.getUser(token);
   }
 
   public getToken(): string | null {
@@ -93,10 +96,14 @@ export class TokenStorageService {
 
   public getUser(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
-    if (user) {
-      return JSON.parse(user);
+    let token = this.getToken();
+    if (token !== null) {
+      this.decoded = jwt_decode(token);
+      //DEBUGGING - REMOVE BEFORE SUBMISSION
+      // console.log('get user method results ' + JSON.stringify(this.decoded));
+      return this.decoded;
     }
 
-    return {};
+    return null;
   }
 }

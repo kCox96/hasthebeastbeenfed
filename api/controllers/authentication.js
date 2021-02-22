@@ -75,7 +75,7 @@ module.exports.login = async function (req, res) {
       id: user._id,
     },
     process.env.TOKEN_SECRET,
-    { expiresIn: "30s" }
+    { expiresIn: "1h" }
   );
 
   // set token session in the HTTP Response body

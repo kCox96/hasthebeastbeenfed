@@ -8,19 +8,26 @@ import { TokenStorageService } from '../shared/token-storage.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
+/**
+ * This component handles login requests
+ */
 export class LoginComponent implements OnInit {
+  // set variable for form data
   form: any = {
     email: null,
     password: null,
   };
 
-  isLoggedIn = false;
+  // error handling variable
   isLoginFailed = false;
+
+  // variables for displaying information
   errorMessage = '';
   infoMessage = '';
   logoutMessage = '';
   sessionExpiredMessage = '';
 
+  // Import all services in constructor
   constructor(
     private auth: AuthenticationService,
     private tokenStorage: TokenStorageService,
@@ -29,11 +36,6 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // if token exists, set isLoggedIn value to true
-    // if(this.tokenStorage.getToken()) {
-    //   this.isLoggedIn = true;
-    // }
-
     // Handle redirect from signup page
     this.route.queryParams.subscribe((params) => {
       if (params.registered !== undefined && params.registered === 'true') {
@@ -48,12 +50,14 @@ export class LoginComponent implements OnInit {
     });
 
     // Handle redirect from jwt expiry
-    // this.route.queryParams
-    // .subscribe(params => {
-    //   if(params.sessionExpired !== undefined && params.sessionExpired === 'true') {
-    //       this.sessionExpiredMessage = 'Session expired. Please login.';
-    //   }
-    // });
+    this.route.queryParams.subscribe((params) => {
+      if (
+        params.sessionExpired !== undefined &&
+        params.sessionExpired === 'true'
+      ) {
+        this.sessionExpiredMessage = 'Session expired. Please login.';
+      }
+    });
   }
 
   onSubmit(): void {
@@ -62,6 +66,7 @@ export class LoginComponent implements OnInit {
     // Pull values from form
     const { email, password } = this.form;
 
+    // use auth login method to login with credentials pulled from form
     this.auth.login(email, password).subscribe(
       (data) => {
         // DEBUGGING - REMOVE BEFORE SUBMISSION
@@ -72,20 +77,19 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveUser(data.data);
         // Set this flag for error handling and displaying error information on client side
         this.isLoginFailed = false;
-        // do we need this?
-        // this.isLoggedIn = true;
-        // this.reloadPage();
 
         // navigate user to account screen when they've logged in
         this.router.navigate(['account']);
+        // this.reloadPage();
       },
+      // error handling
       (err) => {
-        this.errorMessage = err.error.message;
+        this.errorMessage = JSON.stringify(err.error.error);
+        // set boolean used to display error message in template
         this.isLoginFailed = true;
       }
     );
   }
-
   reloadPage(): void {
     window.location.reload();
   }
