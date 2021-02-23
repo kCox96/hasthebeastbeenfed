@@ -13,8 +13,6 @@ export class CardviewComponent {
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.dataService
-      .getCatsExample('562346672')
-      .subscribe((cats: ICats[]) => (this.cats = cats));
+    this.dataService.getCats().subscribe((cats: ICats[]) => (this.cats = cats));
   }
 }
