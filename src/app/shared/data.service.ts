@@ -33,13 +33,12 @@ export class DataService {
       .pipe(catchError(this.handleError));
   }
 
-  private exampleuser() {
-    return '601d5d6d9fa0736f50095003';
-  }
-
   //Get cats for cardview
   getCats(): Observable<ICats[]> {
-    var userId = this.Token.getUser();
+    var userId: string;
+    this.Token.userId.subscribe((data: string) => {
+      userId = data;
+    });
     return this.http
       .get<ICats[]>(this.APIUrl + 'cats/' + userId, this.httpOptions)
       .pipe(catchError(this.handleError));
@@ -47,7 +46,10 @@ export class DataService {
 
   //create cat for addcat page
   createCat(cat: ICat): Observable<any> {
-    var userId = this.Token.getUser();
+    var userId: string;
+    this.Token.userId.subscribe((data: string) => {
+      userId = data;
+    });
     return this.http
       .post<ICat>(this.APIUrl + 'cats/' + userId, cat, this.httpOptions)
       .pipe(catchError(this.handleError));
@@ -61,17 +63,22 @@ export class DataService {
   }
 
   feedCat(catId: string, feed: IFeed): Observable<any> {
-    return this.http.post<IFeed>(
-      this.APIUrl + 'cats/feeding/' + catId,
-      feed,
-      this.httpOptions
-    );
+    return this.http
+      .post<IFeed>(
+        this.APIUrl + 'cats/feeding/' + catId,
+        feed,
+        this.httpOptions
+      )
+      .pipe(catchError(this.handleError));
   }
 
   UpdateCat(cat: ICat): Observable<any> {
-    var userId = this.Token.getUser();
+    var userId: string;
+    this.Token.userId.subscribe((data: string) => {
+      userId = data;
+    });
     return this.http
-      .post<ICat>(this.APIUrl + 'cats/' + userId, cat, this.httpOptions)
+      .post<any>(this.APIUrl + 'cats/' + userId, cat, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

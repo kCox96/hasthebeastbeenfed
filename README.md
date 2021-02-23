@@ -14,6 +14,11 @@ The backend of this project was generated with [nodejs]() version 14.15.4, [expr
 
 ## Launching the App
 
+_secret step_
+at the root level of the application create a file called .env
+and paste this in TOKEN_SECRET = 903847209uoidjdflkdsncldfjwifoewlke
+_need step to launch mongo_
+
 Run `npm install` at the root level to install all the needed dependencies.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
