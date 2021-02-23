@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../authentication.service';
-import { TokenPayload } from '../models/tokenpayload.model';
+import { AuthenticationService } from '../shared/authentication.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -9,23 +9,40 @@ import { TokenPayload } from '../models/tokenpayload.model';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  credentials: TokenPayload = {
-    email: '',
-    name: '',
-    password: ''
+  // set form variables
+  form: any = {
+    username: null, 
+    email: null, 
+    password: null, 
   };
-  
+
+  isSuccessful = false; 
+  isSignUpFailed = false;
+  errorMessage = '';
   constructor(private auth: AuthenticationService, private router: Router) {}
 
-  register() {
-    this.auth.register(this.credentials).subscribe(() => {
-      this.router.navigateByUrl('/profile');
-    }, (err) => {
-      console.error(err);
-    });
+  ngOnInit(): void {
   }
 
-  ngOnInit(): void {
+  onSubmit() : void {
+     // DEBUGGING - REMOVE BEFORE SUBMISSION 
+     
+    console.log("signup on submit called");
+    const { username, email, password } = this.form; 
+    this.auth.signup(username, email, password).subscribe(
+      data => {
+        //DEBUGGING - REMOVE BEFORE SUBMISSION
+        console.log("login submit request data" + JSON.stringify(data));
+        this.isSuccessful = true; 
+        this.isSignUpFailed = false;
+      },
+      err => {
+        this.errorMessage = err.error.errorMessage;
+        this.isSignUpFailed = true; 
+      }
+    );
+    // redirect user to login after creating account 
+    this.router.navigate(['login'], {queryParams : { registered: 'true'}});
   }
 
 }

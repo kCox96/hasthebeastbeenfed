@@ -6,7 +6,11 @@ if (process.env.NODE_ENV === "production") {
   dbURI = process.env.MONGOLAB_URI;
 }
 dotenv.config();
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(dbURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+});
 
 // CONNECTION EVENTS
 mongoose.connection.on("connected", function () {

@@ -7,14 +7,21 @@
       <div class="fancy">Has The Beast Been Fed?</div>
     </a>
 
+    <div class="user-greeting">
+      <p *ngIf="loggedIn && username !== null">Hello, {{ username }}</p>
+    </div>
     <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
     <a (click)="shouldShow = !shouldShow" class="icon">
       <img src="../../assets/bars-solid.svg" alt="" />
     </a>
     <!-- Navigation links (hidden by default) -->
     <div id="myLinks" [ngClass]="{ show: shouldShow }">
-      <a href="/login">Login</a>
-      <a href="/signup">Sign Up</a>
+      <!-- If user logged in, hide login and signup links -->
+      <a *ngIf="!loggedIn" href="/login">Login</a>
+      <a *ngIf="!loggedIn" href="/signup">Sign Up</a>
+      <!-- Pipe observable value to subscribe to it -->
+
+      <button *ngIf="isLoggedIn$ | async" (click)="onSignOut()">Signout</button>
     </div>
   </div>
 </header>

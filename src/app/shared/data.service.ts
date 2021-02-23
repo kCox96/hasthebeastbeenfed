@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AuthenticationService } from '../authentication.service';
+import { TokenStorageService } from './token-storage.service';
 import { ICats, ICat, IFeed } from './interface';
 
 @Injectable()

@@ -124,4 +124,10 @@
   .logo {
     margin-left: 1.5rem;
   }
+
+  .user-greeting {
+    display: flex;
+    text-align: center;
+    margin: 10px;
+  }
 }

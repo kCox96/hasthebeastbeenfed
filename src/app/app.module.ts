@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './homepage/home/home.component';
@@ -15,12 +15,13 @@ import { CardComponent } from './cardview/card/card.component';
 import { AddcatComponent } from './cardview/addcat/addcat.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './shared/data.service';
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from './shared/authentication.service';
 import { FooterComponent } from './footer/footer.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { FAQComponent } from './faq/faq.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CatcreateComponent } from './catcreate/catcreate.component';
+import { AuthInterceptorProviders } from './shared/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -46,8 +47,9 @@ import { CatcreateComponent } from './catcreate/catcreate.component';
     HttpClientModule,
     RouterModule.forRoot([]),
     FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [AuthenticationService, DataService],
+  providers: [AuthInterceptorProviders, AuthenticationService, DataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

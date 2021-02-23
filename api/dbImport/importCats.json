@@ -1,0 +1,235 @@
+[{
+  "_id": {
+    "$oid": "602f8e4713374d1cbf70919f"
+  },
+  "name": "MaggieMay",
+  "feedingTimes": [
+    {
+      "time": {
+        "$date": "2020-02-02T09:00:00Z"
+      },
+      "foodType": "wet"
+    },
+    {
+      "time": {
+        "$date": "2020-02-02T17:00:00Z"
+      },
+      "foodType": "dry"
+    },
+    {
+      "time": {
+        "$date": "2020-02-03T09:00:00Z"
+      },
+      "foodType": "dry"
+    }
+  ],
+  "users": [
+    {
+      "userId": {
+        "$oid": "601d5d6d9fa0736f50095003"
+      }
+    },
+    {
+      "userId": {
+        "$oid": "601d5c380a6fa16da56ff1be"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6023c5c381e5ac0c5d4ee21f"
+  },
+  "name": "Pumba",
+  "feedingTimes": [
+    {
+      "time": {
+        "$date": "2020-02-02T09:00:00Z"
+      },
+      "foodType": "wet"
+    },
+    {
+      "time": {
+        "$date": "2020-02-02T17:00:00Z"
+      },
+      "foodType": "dry"
+    },
+    {
+      "time": {
+        "$date": "2020-02-03T09:00:00Z"
+      },
+      "foodType": "dry"
+    }
+  ],
+  "users": [
+    {
+      "userId": {
+        "$oid": "601d5d6d9fa0736f50095003"
+      }
+    },
+    {
+      "userId": {
+        "$oid": "601d5c380a6fa16da56ff1be"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6023c5bb81e5ac0c5d4ee21e"
+  },
+  "name": "Timon",
+  "feedingTimes": [
+    {
+      "time": {
+        "$date": "2020-02-02T09:00:00Z"
+      },
+      "foodType": "wet"
+    },
+    {
+      "time": {
+        "$date": "2020-02-02T17:00:00Z"
+      },
+      "foodType": "dry"
+    },
+    {
+      "time": {
+        "$date": "2020-02-03T09:00:00Z"
+      },
+      "foodType": "dry"
+    }
+  ],
+  "users": [
+    {
+      "userId": {
+        "$oid": "601d5d6d9fa0736f50095003"
+      }
+    },
+    {
+      "userId": {
+        "$oid": "601d5c380a6fa16da56ff1be"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "60229079c33cf65847e6937d"
+  },
+  "name": "Mr Bigglesworth",
+  "feedingTimes": [
+    {
+      "time": {
+        "$date": "2020-02-02T09:00:00Z"
+      },
+      "foodType": "wet"
+    },
+    {
+      "time": {
+        "$date": "2020-02-02T17:00:00Z"
+      },
+      "foodType": "dry"
+    },
+    {
+      "time": {
+        "$date": "2020-02-03T09:00:00Z"
+      },
+      "foodType": "dry"
+    }
+  ],
+  "users": [
+    {
+      "userId": {
+        "$oid": "601d5d6d9fa0736f50095003"
+      }
+    },
+    {
+      "userId": {
+        "$oid": "601d5c380a6fa16da56ff1be"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "60181b308e15ef9582c33e60"
+  },
+  "name": "Snuggles",
+  "feedingTimes": [
+    {
+      "time": {
+        "$date": "2020-02-02T09:00:00Z"
+      },
+      "foodType": "wet"
+    },
+    {
+      "time": {
+        "$date": "2020-02-02T17:00:00Z"
+      },
+      "foodType": "dry"
+    },
+    {
+      "time": {
+        "$date": "2020-02-03T09:00:00Z"
+      },
+      "foodType": "dry"
+    }
+  ],
+  "users": [
+    {
+      "userId": {
+        "$oid": "601d5d6d9fa0736f50095003"
+      }
+    },
+    {
+      "userId": {
+        "$oid": "601d5c380a6fa16da56ff1be"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "60181b408e15ef9582c33e61"
+  },
+  "name": "Muffin",
+  "feedingTimes": [
+    {
+      "time": {
+        "$date": "2020-02-02T09:00:00Z"
+      },
+      "foodType": "wet"
+    },
+    {
+      "time": {
+        "$date": "2020-02-02T17:00:00Z"
+      },
+      "foodType": "dry"
+    },
+    {
+      "time": {
+        "$date": "2020-02-03T09:00:00Z"
+      },
+      "foodType": "dry"
+    }
+  ],
+  "users": [
+    {
+      "userId": {
+        "$oid": "601d5d6d9fa0736f50095003"
+      }
+    },
+    {
+      "userId": {
+        "$oid": "601d5c380a6fa16da56ff1be"
+      }
+    }
+  ],
+  "__v": 0
+}
+]
