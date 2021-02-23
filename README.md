@@ -1,8 +1,16 @@
-# HTBBF
+# Assignment 1 HTBBF
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.3.
 
 The backend of this project was generated with [nodejs]() version 14.15.4, [express]() and [MongoDB]().
+
+## Development Team
+
+- Kiana Cox
+- Callum Friend
+- Phil Walker
+
+## Application Summary
 
 ## Launching the App
 
@@ -11,6 +19,21 @@ Run `npm install` at the root level to install all the needed dependencies.
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 Run `npm start` for the node backend.
+
+## Technology Stack
+
+- Angular 11: Front end framework. Business logic is handled within the framework using Typescript.
+- NodeJs and Express: Create the server and connection to database.
+- MongoDb: Data retention.
+- Slack: Team communications.
+- Github: Version control.
+
+## Work Approach
+
+- Agile (include evidence of tickets)?
+- Introduce feature freeze at some point?
+- Merge reviews to prevent breaking main
+- Weekly reviews
 
 ## User Authentication
 
