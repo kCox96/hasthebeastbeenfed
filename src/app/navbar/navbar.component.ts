@@ -21,24 +21,38 @@ export class NavbarComponent {
   // login check variables
   public isLoggedIn$ = new Observable<boolean>();
   public loggedIn = false;
-  public userData;
+  public userData$ = new Observable<string>();
   public username;
-  public userSub$ = new Observable<string>();
+  public userId$ = new Observable<string>();
+  public userId;
 
   // When component is initialised, subscribe to get method in auth service to run consistent checks
   // about a user's login state
-  ngOnInit(): void {
-    this.isLoggedIn$ = this.auth.isUserLoggedIn;
+  async ngOnInit(): Promise<void> {
+    this.isLoggedIn$ = await this.auth.isUserLoggedIn;
     this.isLoggedIn$.subscribe((data: boolean) => {
       this.loggedIn = data;
     });
 
-    this.userData = this.token.getUser();
-    if (this.userData !== null) {
-      console.log('user data at navbar' + this.userData);
-      this.username = this.userData.name;
-      console.log(this.username);
-    }
+    this.userData$ = await this.token.username;
+    this.userData$.subscribe((data: any) => {
+      // set username and trim double quotes
+      if (data !== null) {
+        this.username = data.replace(/['"]+/g, '');
+        // DEBUGGING
+        console.log('user data at navbar ' + this.username);
+      }
+    });
+
+    // HOW TO USE GET USER ID SERVICE
+    this.userId$ = await this.token.userId;
+    this.userId$.subscribe((data: any) => {
+      if (data !== null) {
+        this.userId = data;
+        // DEBUGGING
+        console.log('user id at navbar ' + this.userId);
+      }
+    });
   }
 
   onSignOut(): void {
