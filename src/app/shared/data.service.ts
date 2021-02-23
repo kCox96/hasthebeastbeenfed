@@ -11,7 +11,7 @@ export class DataService {
   baseUrl: string = 'assets/';
   APIUrl: string = 'http://localhost:3000/api/';
 
-  constructor(private http: HttpClient, private Auth: AuthenticationService) {}
+  constructor(private http: HttpClient, private Token: TokenStorageService) {}
 
   //////////////////////////////////////////////////////////////////
   //  This service is used to retrieve/send data from the server  //
@@ -22,7 +22,7 @@ export class DataService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json;charset=utf-8',
       //Stringify in case its NULL
-      'auth-token': JSON.stringify(this.Auth.getToken()),
+      'auth-token': JSON.stringify(this.Token.getToken()),
     }),
   };
 
@@ -39,7 +39,7 @@ export class DataService {
 
   //Get cats for cardview
   getCats(): Observable<ICats[]> {
-    var userId = this.exampleuser();
+    var userId = this.Token.getUser();
     return this.http
       .get<ICats[]>(this.APIUrl + 'cats/' + userId, this.httpOptions)
       .pipe(catchError(this.handleError));
@@ -47,7 +47,7 @@ export class DataService {
 
   //create cat for addcat page
   createCat(cat: ICat): Observable<any> {
-    var userId = this.exampleuser();
+    var userId = this.Token.getUser();
     return this.http
       .post<ICat>(this.APIUrl + 'cats/' + userId, cat, this.httpOptions)
       .pipe(catchError(this.handleError));
@@ -69,7 +69,7 @@ export class DataService {
   }
 
   UpdateCat(cat: ICat): Observable<any> {
-    var userId = this.exampleuser();
+    var userId = this.Token.getUser();
     return this.http
       .post<ICat>(this.APIUrl + 'cats/' + userId, cat, this.httpOptions)
       .pipe(catchError(this.handleError));
