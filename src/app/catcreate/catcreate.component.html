@@ -1,1 +1,4 @@
-<p>catcreate works!</p>
+<div class="cat-create">
+  <input #catname type="text" placeholder="Cat Name" />
+  <button type="submit" (click)="createCat(catname.value)">Submit</button>
+</div>

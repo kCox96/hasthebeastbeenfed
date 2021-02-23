@@ -30,7 +30,7 @@ export class CardComponent implements OnInit {
       feed.time = date.toJSON();
       feed.foodType = '';
     }
-    this.dataService.feedCat(catId, feed);
+    this.dataService.feedCat(catId, feed).subscribe((data) => {});
   }
 
   ngOnInit(): void {}

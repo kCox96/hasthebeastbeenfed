@@ -1,0 +1,12 @@
+.cat-create {
+  border-radius: 6px;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+}
+.cat-create input,
+button {
+  flex-basis: 100%;
+  margin-top: 0.5rem;
+}
