@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -9,9 +10,15 @@ export class HomepageComponent implements OnInit {
   form: any = {
     email: null,
   };
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
-  onSubmit() {}
+  onSubmit() {
+    const email = this.form.email;
+    console.log('on submit email value ' + email);
+    this.router.navigate(['signup'], {
+      queryParams: { userEmail: email },
+    });
+  }
 }
