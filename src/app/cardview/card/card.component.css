@@ -48,18 +48,18 @@
   align-items: center;
 }
 
+.card-content img {
+  max-width: 100%;
+  height: auto;
+}
+
 button {
-  border-radius: 6px;
-  background-color: transparent;
-  border: 2px solid var(--accent);
-  display: inline-block;
-  cursor: pointer;
-  color: #666666;
-  font-size: 15px;
-  font-weight: bold;
-  text-decoration: none;
   padding: 0.5rem 2.5rem;
   margin: 0.5rem;
-  box-sizing: border-box;
-  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .card {
+    flex-basis: 28%;
+  }
 }

@@ -12,7 +12,7 @@
     <div>Food Type: {{ cat.feedingTimes.foodType }}</div>
   </div>
   <div class="card-bottom">
-    <button type="submit">Feed Me</button>
+    <button (click)="doFeedCat(cat._id)" type="submit">Feed Me</button>
   </div>
 </div>
 
