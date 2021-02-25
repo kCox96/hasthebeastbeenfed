@@ -10,6 +10,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CatcreateComponent } from './catcreate/catcreate.component';
 import { AuthGuard } from './shared/auth.guard';
 import { HomepageComponent } from './homepage/homepage.component';
+import { CateditComponent } from './catedit/catedit.component';
 
 // need to add https://angular.io/api/router/CanActivate
 
@@ -19,7 +20,7 @@ export const routes: Routes = [
   { path: 'login', pathMatch: 'full', component: LoginComponent },
   { path: 'signup', pathMatch: 'full', component: SignupComponent },
   { path: 'contactus', pathMatch: 'full', component: ContactUsComponent },
-  //To Be Login Only
+  //Login Only
   {
     path: 'account',
     pathMatch: 'full',
@@ -38,7 +39,12 @@ export const routes: Routes = [
     component: CatcreateComponent,
     canActivate: [AuthGuard],
   },
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  {
+    path: 'catedit/:id',
+    component: CateditComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: '*', pathMatch: 'full', redirectTo: 'home' },
 ];
 
 @NgModule({

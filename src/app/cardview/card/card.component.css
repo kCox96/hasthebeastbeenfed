@@ -20,6 +20,8 @@
   margin: 0;
   align-content: center;
   justify-content: center;
+  font-size: 1.2rem;
+  height: 100%;
 }
 
 .card-image {
@@ -46,6 +48,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 0;
+  margin-top: auto;
 }
 
 .card-content img {
@@ -56,6 +60,12 @@
 button {
   padding: 0.5rem 2.5rem;
   margin: 0.5rem;
+  box-shadow: 0;
+  transition: box-shadow 1s;
+}
+
+button:hover {
+  box-shadow: 0 0 3px #515151;
 }
 
 @media (min-width: 768px) {
