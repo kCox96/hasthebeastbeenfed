@@ -42,6 +42,37 @@ module.exports.getCats = async function (req, res) {
 };
 
 /**
+ * GET /api/cat/:_id
+ * @summary returns a single cat document for the _id passed into the API call
+ * @param {_id} req
+ * @response 200 - OK
+ * @response 500 - Error
+ */
+module.exports.getCat = async function (req, res) {
+  // get _id from request
+  var id = req.params._id;
+
+  // if the _id provided in the request isn't valid return an error
+  if (!isValidObjectId(id)) {
+    // no good, send a 500 and stop function execution
+    res.status(500).send("Parameter is not a valid ObjectId");
+    return;
+  } // _id is valid - let's carry on
+
+  // build the query
+  Cat.findById(id, function (err, cat) {
+    // execute the query
+    // return 500 and error if something went wrong
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      // all good, return 200 and the data
+      res.status(200).send(cat);
+    }
+  });
+};
+
+/**
  * GET /api/cats/feeding/latest/:_id
  * @summary returns a single cat document with the latest feeding time associated with
  * the ObjectId passed into the API call
