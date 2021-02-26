@@ -25,7 +25,7 @@ export class CateditComponent implements OnInit {
     }
   }
 
-  GetTheCat() {
+  async GetTheCat() {
     this.id = this.route.snapshot.paramMap.get('id');
     var Mycats: ICats[];
     return this.dataService.getCats().subscribe((cats: ICats[]) => {

@@ -15,6 +15,11 @@
   height: 1.5rem;
 }
 
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .card-content {
   background-color: var(--base);
   margin: 0;
@@ -23,7 +28,14 @@
   font-size: 1.2rem;
   height: 100%;
 }
-
+.card-bottom {
+  background-color: var(--base);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 0;
+  margin-top: auto;
+}
 .card-image {
   margin: 0;
   display: flex;
@@ -38,26 +50,13 @@
   padding: 0.5rem;
 }
 
-.card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card-bottom {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 0;
-  margin-top: auto;
-}
-
 .card-content img {
   max-width: 100%;
   height: auto;
 }
 
 button {
+  background-color: white;
   padding: 0.5rem 2.5rem;
   margin: 0.5rem;
   box-shadow: 0;
