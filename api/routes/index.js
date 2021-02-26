@@ -15,8 +15,10 @@ router.post("/api/login", ctrlAuth.login);
 
 // cat routes
 router.get("/api/cats/:userId", ctrlCat.getCats);
+router.get("/api/cat/:_id", ctrlCat.getCat);
 router.get("/api/cats/feeding/latest/:_id", ctrlCat.getLatestFeedingTime);
 router.get("/api/cats/feeding/all/:_id", ctrlCat.getAllFeedingTimes);
+
 router.post("/api/cats/:userId", ctrlCat.createCat);
 
 router.put("/api/cats/users/:_id", ctrlCat.updateCatUsers);
