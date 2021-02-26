@@ -178,6 +178,47 @@ module.exports.createCat = async function (req, res) {
 };
 
 /**
+ * POST /api/cats/replace/:_id
+ * @summary replaces a single cat document with the Object provided
+ * @param {_id} req
+ * @body {name} - the cat's name
+ * @response 200 - OK
+ * @response 500 - Error
+ */
+module.exports.replaceCat = async function (req, res) {
+  // get cat ObjectId from request
+  var id = req.params._id;
+  // get replacement document object from request
+  var replacement = req.body;
+  // create an instance of a mongoose ObjectId to be used in the query
+  var ObjectId = mongoose.Types.ObjectId;
+
+  // if the _id provided in the request isn't valid return an error
+  if (!isValidObjectId(id)) {
+    // no good, send a 500 and stop function execution
+    res.status(500).send("Parameter is not a valid ObjectId");
+    return;
+  } // _id is valid - let's carry on
+
+  // build the query to find the targeted cat document
+  var query = {
+    _id: new ObjectId(id),
+  };
+
+  var options = { new: true };
+
+  Cat.findOneAndReplace(query, replacement, options, function (err, cat) {
+    // return 500 and error if something went wrong
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      // all good, return 200 and the data
+      res.status(200).send(cat);
+    }
+  });
+};
+
+/**
  * PUT /api/cats/users/:_id
  * @summary updates a single cat document with a specified userId
  * @param {_id} req
