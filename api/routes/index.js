@@ -20,6 +20,7 @@ router.get("/api/cats/feeding/latest/:_id", ctrlCat.getLatestFeedingTime);
 router.get("/api/cats/feeding/all/:_id", ctrlCat.getAllFeedingTimes);
 
 router.post("/api/cats/:userId", ctrlCat.createCat);
+router.post("/api/cats/replace/:_id", ctrlCat.replaceCat);
 
 router.put("/api/cats/users/:_id", ctrlCat.updateCatUsers);
 router.put("/api/cats/feeding/:_id", ctrlCat.updateCatFeedingTimes);
