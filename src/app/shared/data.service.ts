@@ -4,11 +4,10 @@ import { Observable } from 'rxjs';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { TokenStorageService } from './token-storage.service';
-import { ICats, ICat, IFeed } from './interface';
+import { ICats, ICat, IFeed } from '../models/interface';
 
 @Injectable()
 export class DataService {
-  baseUrl: string = 'assets/';
   APIUrl: string = 'http://localhost:3000/api/';
 
   constructor(private http: HttpClient, private Token: TokenStorageService) {}
@@ -21,17 +20,8 @@ export class DataService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json;charset=utf-8',
-      //Stringify in case its NULL
-      'auth-token': JSON.stringify(this.Token.getToken()),
     }),
   };
-
-  // Example for testing DELETE FOR FINAL
-  getCatsExample(id: string): Observable<ICats[]> {
-    return this.http
-      .get<ICats[]>(this.baseUrl + 'cats.json', this.httpOptions)
-      .pipe(catchError(this.handleError));
-  }
 
   //Get cats for cardview
   getCats(): Observable<ICats[]> {
@@ -62,13 +52,10 @@ export class DataService {
       .pipe(catchError(this.handleError));
   }
 
+  //feedCat for adding a feeding event to a cat
   feedCat(catId: string, feed: IFeed): Observable<any> {
     return this.http
-      .post<IFeed>(
-        this.APIUrl + 'cats/feeding/' + catId,
-        feed,
-        this.httpOptions
-      )
+      .put<IFeed>(this.APIUrl + 'cats/feeding/' + catId, feed, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

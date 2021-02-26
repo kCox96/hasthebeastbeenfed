@@ -1,15 +1,25 @@
 <div *ngFor="let cat of cats" class="card">
   <div class="card-top">
-    <img src="../../../assets/pencil.svg" alt="" />
+    <a href="/catedit/{{ cat._id }}"
+      ><img src="../../../assets/pencil.svg" alt=""
+    /></a>
     <div>{{ cat.name }}</div>
     <img src="../../../assets/dots.svg" alt="" />
   </div>
   <div class="card-content">
     <div class="card-image">
-      <img src="../../../assets/kitten.jpeg" alt="" />
+      <img src="../../../assets/kitten.jpeg" alt="picture of {{ cat.name }}" />
     </div>
-    <div>Last Fed: {{ cat.feedingTimes.time }}</div>
-    <div>Food Type: {{ cat.feedingTimes.foodType }}</div>
+    <div *ngIf="cat.feedingTimes.length">
+      Last Fed:
+      {{ cat.feedingTimes[cat.feedingTimes.length - 1].time | date: "short" }}
+    </div>
+    <div *ngIf="cat.feedingTimes.length">
+      Food Type: {{ cat.feedingTimes[cat.feedingTimes.length - 1].foodType }}
+    </div>
+    <div *ngIf="!cat.feedingTimes.length">
+      This beast has not been fed give them a treat!
+    </div>
   </div>
   <div class="card-bottom">
     <button (click)="doFeedCat(cat._id)" type="submit">Feed Me</button>

@@ -1,9 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --accent: #7a6c5d;
-  --base: #ddc9b4;
+  --accent: #e5e5e5;
+  --base: #264653;
   --background: white;
   --background-alt: #ddd;
+  --content: rgba(42, 157, 143, 0.7);
 }
 
 body {

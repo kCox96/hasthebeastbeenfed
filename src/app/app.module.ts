@@ -22,6 +22,7 @@ import { FAQComponent } from './faq/faq.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CatcreateComponent } from './catcreate/catcreate.component';
 import { AuthInterceptorProviders } from './shared/auth.interceptor';
+import { CateditComponent } from './catedit/catedit.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { AuthInterceptorProviders } from './shared/auth.interceptor';
     FAQComponent,
     ContactUsComponent,
     CatcreateComponent,
+    CateditComponent,
   ],
   imports: [
     BrowserModule,

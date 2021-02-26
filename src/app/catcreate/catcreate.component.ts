@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../shared/data.service';
-import { ICat, IUserID } from '../shared/interface';
+import { ICat } from '../models/interface';
 
 @Component({
   selector: 'app-catcreate',
@@ -18,6 +18,7 @@ export class CatcreateComponent implements OnInit {
         users: [],
       };
       this.dataService.createCat(cat).subscribe((data) => {});
+      window.location.href = './cardview';
     }
   }
 
