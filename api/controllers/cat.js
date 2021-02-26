@@ -236,8 +236,10 @@ module.exports.replaceCat = async function (req, res) {
     _id: new ObjectId(id),
   };
 
+  // build the query options to return the modified document on completion
   var options = { new: true };
 
+  // Execute the query
   Cat.findOneAndReplace(query, replacement, options, function (err, cat) {
     // return 500 and error if something went wrong
     if (err) {
