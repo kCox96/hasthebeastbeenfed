@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const { signupValidation, loginValidation } = require("./validation");
 const User = mongoose.model("User");
+const Cat = mongoose.model("Cat"); // needed to remove the userId from any associated cat on deletion
 
 /**
  *  Registration controller
@@ -92,3 +93,73 @@ module.exports.login = async function (req, res) {
     },
   });
 };
+
+/**
+ * DELETE /api/users/:_id
+ * @summary deletes a single user document from the database
+ * along with any associatons to cat documents the user has
+ * @param {_id} req
+ * @response 200 - OK
+ * @response 500 - Error
+ */
+module.exports.deleteUser = async function (req, res) {
+  // get user ObjectId from request
+  var id = req.params._id;
+  // create an instance of a mongoose ObjectId to be used in the query
+  var ObjectId = mongoose.Types.ObjectId;
+
+  // if the _id provided in the request isn't valid return an error
+  if (!isValidObjectId(id)) {
+    // no good, send a 500 and stop function execution
+    res.status(500).send("Parameter is not a valid ObjectId");
+    return;
+  } // _id is valid - let's carry on
+
+  // build the update query filter to loop through all cat documents by specifying an empty document
+  var updateFilter = {};
+
+  // build the update query to delete the userId association from any cat documents
+  var updateQuery = { $pull: { users: { userId: new ObjectId(id) } } };
+
+  // build the update query options to update multiple matched documents
+  // and not upsert (i.e. create a new document if one doesn't exist)
+  var updateOptions = { multi: true, upsert: false };
+
+  // build the delete query to find the targeted user document
+  var deleteQuery = { _id: new ObjectId(req.params._id) };
+
+  // execute the update query - on success we'll then move on to delete the user
+  Cat.updateMany(
+    updateFilter,
+    updateQuery,
+    updateOptions,
+    function (err, cats) {
+      // return 500 and error if something went wrong with the update
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        // all good, carry on to delete the user
+        User.findByIdAndDelete(deleteQuery, function (err, cat) {
+          // return 500 and error if something went wrong with the deletion
+          if (err) {
+            res.status(500).send(err);
+          } else {
+            // all good, return 200 and the data
+            res.status(200).send(cat);
+          }
+        });
+      }
+    }
+  );
+};
+
+// helper method to ensure _id or userId params
+// passed to the API are valid MongoDB ObjectId types
+// ObjectIds consist of 24 hex chars (0-9, a-f or A-F)
+function isValidObjectId(id) {
+  if (id.match(/^[0-9a-fA-F]{24}$/)) {
+    return true;
+  } else {
+    return false;
+  }
+}
