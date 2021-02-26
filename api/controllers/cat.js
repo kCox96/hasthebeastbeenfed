@@ -212,7 +212,7 @@ module.exports.createCat = async function (req, res) {
  * POST /api/cats/replace/:_id
  * @summary replaces a single cat document with the Object provided
  * @param {_id} req
- * @body {name} - the cat's name
+ * @body {document} - document Object to replace the _id specified document in the database
  * @response 200 - OK
  * @response 500 - Error
  */
