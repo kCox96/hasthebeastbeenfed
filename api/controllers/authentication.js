@@ -126,7 +126,7 @@ module.exports.deleteUser = async function (req, res) {
   var updateOptions = { multi: true, upsert: false };
 
   // build the delete query to find the targeted user document
-  var deleteQuery = { _id: new ObjectId(req.params._id) };
+  var deleteQuery = { _id: new ObjectId(id) };
 
   // execute the update query - on success we'll then move on to delete the user
   Cat.updateMany(
