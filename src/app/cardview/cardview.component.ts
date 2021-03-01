@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataService } from '../shared/data.service';
-import { ICats } from '../shared/interface';
+import { ICats } from '../models/interface';
 
 @Component({
   selector: 'app-cardview',
@@ -11,8 +11,11 @@ import { ICats } from '../shared/interface';
 export class CardviewComponent {
   cats: ICats[];
   constructor(private dataService: DataService) {}
-
-  ngOnInit() {
+  //gets cats for card view page passed to cards through angular html []
+  getTheCats() {
     this.dataService.getCats().subscribe((cats: ICats[]) => (this.cats = cats));
+  }
+  ngOnInit() {
+    this.getTheCats();
   }
 }

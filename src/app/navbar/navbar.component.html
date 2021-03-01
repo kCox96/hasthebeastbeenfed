@@ -7,8 +7,8 @@
       <div class="fancy">Has The Beast Been Fed?</div>
     </a>
 
-    <div class="user-greeting">
-      <p *ngIf="loggedIn && username !== null">Hello, {{ username }}</p>
+    <div *ngIf="loggedIn && username !== null" class="user-greeting">
+      Hello, {{ username }}
     </div>
     <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
     <a (click)="shouldShow = !shouldShow" class="icon">
@@ -20,8 +20,8 @@
       <a *ngIf="!loggedIn" href="/login">Login</a>
       <a *ngIf="!loggedIn" href="/signup">Sign Up</a>
       <!-- Pipe observable value to subscribe to it -->
-
-      <button *ngIf="isLoggedIn$ | async" (click)="onSignOut()">Signout</button>
+      <a *ngIf="isLoggedIn$ | async" href="/account">Account</a>
+      <a *ngIf="isLoggedIn$ | async" (click)="onSignOut()">Sign Out</a>
     </div>
   </div>
 </header>
