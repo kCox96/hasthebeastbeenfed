@@ -139,13 +139,13 @@ module.exports.deleteUser = async function (req, res) {
         res.status(500).send(err);
       } else {
         // all good, carry on to delete the user
-        User.findByIdAndDelete(deleteQuery, function (err, cat) {
+        User.findByIdAndDelete(deleteQuery, function (err, user) {
           // return 500 and error if something went wrong with the deletion
           if (err) {
             res.status(500).send(err);
           } else {
             // all good, return 200 and the data
-            res.status(200).send(cat);
+            res.status(200).send(user);
           }
         });
       }
