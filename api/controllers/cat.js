@@ -269,24 +269,26 @@ module.exports.updateCatUsers = async function (req, res) {
   // create an instance of a mongoose ObjectId to be used in the query
   var ObjectId = mongoose.Types.ObjectId;
 
-  // build the query to find the targeted cat document
-  var updateQuery = {
-    _id: new ObjectId(id),
-  };
-  // build the update part of the query to update the cat document with the userId
-  var updateContent = {
-    $addToSet: { users: { userId: new ObjectId(userId) } },
-  };
-  // build the query options to not upsert (i.e. create a new document if one doesn't exist)
-  // and return the modified document on completion
-  var updateOptions = { upsert: false, new: true };
-
   // if the _id or userId provided in the request isn't valid return an error
   if (!isValidObjectId(id) || !isValidObjectId(userId)) {
     // no good, send a 500 and stop function execution
     res.status(500).send("Parameter is not a valid ObjectId");
     return;
   } // _id and userId are valid - let's carry on
+
+  // build the query to find the targeted cat document
+  var updateQuery = {
+    _id: new ObjectId(id),
+  };
+
+  // build the update part of the query to update the cat document with the userId
+  var updateContent = {
+    $addToSet: { users: { userId: new ObjectId(userId) } },
+  };
+
+  // build the query options to not upsert (i.e. create a new document if one doesn't exist)
+  // and return the modified document on completion
+  var updateOptions = { upsert: false, new: true };
 
   // now validate the userId is not already associated with the cat
   var query = Cat.find({ "users.userId": { $in: userId } });
@@ -342,17 +344,6 @@ module.exports.updateCatFeedingTimes = async function (req, res) {
   var id = req.params._id;
   // create an instance of a mongoose ObjectId to be used in the query
   var ObjectId = mongoose.Types.ObjectId;
-  // build the query to find the targeted cat document
-  var query = { _id: new ObjectId(req.params._id) };
-  // build the update part of the query to update the cat document with the feedingTimes
-  var update = {
-    $push: {
-      feedingTimes: { time: req.body.time, foodType: req.body.foodType },
-    },
-  };
-  // build the query options to not upsert (i.e. create a new document if one doesn't exist)
-  // and return the modified document on completion
-  var options = { upsert: false, new: true };
 
   // if the _id provided in the request isn't valid return an error
   if (!isValidObjectId(id)) {
@@ -360,6 +351,20 @@ module.exports.updateCatFeedingTimes = async function (req, res) {
     res.status(500).send("Parameter is not a valid ObjectId");
     return;
   } // _id is valid - let's carry on
+
+  // build the query to find the targeted cat document
+  var query = { _id: new ObjectId(req.params._id) };
+
+  // build the update part of the query to update the cat document with the feedingTimes
+  var update = {
+    $push: {
+      feedingTimes: { time: req.body.time, foodType: req.body.foodType },
+    },
+  };
+
+  // build the query options to not upsert (i.e. create a new document if one doesn't exist)
+  // and return the modified document on completion
+  var options = { upsert: false, new: true };
 
   // execute the query
   Cat.findByIdAndUpdate(query, update, options, function (err, cat) {
@@ -385,8 +390,6 @@ module.exports.deleteCat = async function (req, res) {
   var id = req.params._id;
   // create an instance of a mongoose ObjectId to be used in the query
   var ObjectId = mongoose.Types.ObjectId;
-  // build the query to find the targeted cat document
-  var query = { _id: new ObjectId(req.params._id) };
 
   // if the _id provided in the request isn't valid return an error
   if (!isValidObjectId(id)) {
@@ -394,6 +397,9 @@ module.exports.deleteCat = async function (req, res) {
     res.status(500).send("Parameter is not a valid ObjectId");
     return;
   } // _id is valid - let's carry on
+
+  // build the query to find the targeted cat document
+  var query = { _id: new ObjectId(req.params._id) };
 
   // execute the query
   Cat.findByIdAndDelete(query, function (err, cat) {
