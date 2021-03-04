@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './homepage/home/home.component';
+import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AccountComponent } from './account/account.component';
@@ -17,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './shared/data.service';
 import { AuthenticationService } from './shared/authentication.service';
 import { FooterComponent } from './footer/footer.component';
-import { HomepageComponent } from './homepage/homepage.component';
+
 import { FAQComponent } from './faq/faq.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CatcreateComponent } from './catcreate/catcreate.component';
@@ -28,7 +28,6 @@ import { CateditComponent } from './catedit/catedit.component';
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent,
     LoginComponent,
     SignupComponent,
     AccountComponent,
@@ -49,7 +48,7 @@ import { CateditComponent } from './catedit/catedit.component';
     HttpClientModule,
     RouterModule.forRoot([]),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [AuthInterceptorProviders, AuthenticationService, DataService],
   bootstrap: [AppComponent],

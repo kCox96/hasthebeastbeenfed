@@ -15,6 +15,7 @@ import { CateditComponent } from './catedit/catedit.component';
 // need to add https://angular.io/api/router/CanActivate
 
 export const routes: Routes = [
+  { path: '', pathMatch: 'full', component: HomepageComponent },
   { path: 'home', pathMatch: 'full', component: HomepageComponent },
   { path: 'faq', pathMatch: 'full', component: FAQComponent },
   { path: 'login', pathMatch: 'full', component: LoginComponent },
