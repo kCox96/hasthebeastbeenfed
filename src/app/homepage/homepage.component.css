@@ -37,13 +37,14 @@ label {
 .card {
   width: 90%;
   margin: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   min-height: 400px;
   display: flex;
   justify-content: center;
   text-align: center;
   background-color: white;
   padding: 50px;
+
   border-radius: 1%;
   border-width: 2px;
 }

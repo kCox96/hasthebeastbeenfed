@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '../shared/authentication.service';
-import { TokenStorageService } from '../shared/token-storage.service';
+import { TokenStorageService } from '../shared/tokenStorage.service';
 import jwt_decode from 'jwt-decode';
 
 @Component({

@@ -55,7 +55,7 @@
 
 /* Style navigation menu links */
 .topnav a {
-  color: var(--accent);
+  color: var(--base);
   text-decoration: none;
   font-size: 17px;
   flex-direction: row;

@@ -4,8 +4,8 @@ import { DataService } from '../shared/data.service';
 import { ICats } from '../models/interface';
 @Component({
   selector: 'app-catedit',
-  templateUrl: './catedit.component.html',
-  styleUrls: ['./catedit.component.css'],
+  templateUrl: './editCat.component.html',
+  styleUrls: ['./editCat.component.css'],
 })
 export class CateditComponent implements OnInit {
   id: string;

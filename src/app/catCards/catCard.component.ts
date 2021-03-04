@@ -4,8 +4,8 @@ import { ICats } from '../models/interface';
 
 @Component({
   selector: 'app-cardview',
-  templateUrl: './cardview.component.html',
-  styleUrls: ['./cardview.component.css'],
+  templateUrl: './catCard.component.html',
+  styleUrls: ['./catCard.component.css'],
   providers: [DataService],
 })
 export class CardviewComponent {
