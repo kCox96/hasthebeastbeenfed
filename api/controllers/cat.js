@@ -42,6 +42,37 @@ module.exports.getCats = async function (req, res) {
 };
 
 /**
+ * GET /api/cat/:_id
+ * @summary returns a single cat document for the _id passed into the API call
+ * @param {_id} req
+ * @response 200 - OK
+ * @response 500 - Error
+ */
+module.exports.getCat = async function (req, res) {
+  // get _id from request
+  var id = req.params._id;
+
+  // if the _id provided in the request isn't valid return an error
+  if (!isValidObjectId(id)) {
+    // no good, send a 500 and stop function execution
+    res.status(500).send("Parameter is not a valid ObjectId");
+    return;
+  } // _id is valid - let's carry on
+
+  // build the query
+  Cat.findById(id, function (err, cat) {
+    // execute the query
+    // return 500 and error if something went wrong
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      // all good, return 200 and the data
+      res.status(200).send(cat);
+    }
+  });
+};
+
+/**
  * GET /api/cats/feeding/latest/:_id
  * @summary returns a single cat document with the latest feeding time associated with
  * the ObjectId passed into the API call
@@ -178,6 +209,50 @@ module.exports.createCat = async function (req, res) {
 };
 
 /**
+ * POST /api/cats/replace/:_id
+ * @summary replaces a single cat document with the Object provided
+ * @param {_id} req
+ * @body {document} - JSON Object which replaces the document in the database which
+ * has the _id specified in the API call
+ * @response 200 - OK
+ * @response 500 - Error
+ */
+module.exports.replaceCat = async function (req, res) {
+  // get cat ObjectId from request
+  var id = req.params._id;
+  // get replacement document object from request
+  var replacement = req.body;
+  // create an instance of a mongoose ObjectId to be used in the query
+  var ObjectId = mongoose.Types.ObjectId;
+
+  // if the _id provided in the request isn't valid return an error
+  if (!isValidObjectId(id)) {
+    // no good, send a 500 and stop function execution
+    res.status(500).send("Parameter is not a valid ObjectId");
+    return;
+  } // _id is valid - let's carry on
+
+  // build the query to find the targeted cat document
+  var query = {
+    _id: new ObjectId(id),
+  };
+
+  // build the query options to return the modified document on completion
+  var options = { new: true };
+
+  // Execute the query
+  Cat.findOneAndReplace(query, replacement, options, function (err, cat) {
+    // return 500 and error if something went wrong
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      // all good, return 200 and the data
+      res.status(200).send(cat);
+    }
+  });
+};
+
+/**
  * PUT /api/cats/users/:_id
  * @summary updates a single cat document with a specified userId
  * @param {_id} req
@@ -194,24 +269,26 @@ module.exports.updateCatUsers = async function (req, res) {
   // create an instance of a mongoose ObjectId to be used in the query
   var ObjectId = mongoose.Types.ObjectId;
 
-  // build the query to find the targeted cat document
-  var updateQuery = {
-    _id: new ObjectId(id),
-  };
-  // build the update part of the query to update the cat document with the userId
-  var updateContent = {
-    $addToSet: { users: { userId: new ObjectId(userId) } },
-  };
-  // build the query options to not upsert (i.e. create a new document if one doesn't exist)
-  // and return the modified document on completion
-  var updateOptions = { upsert: false, new: true };
-
   // if the _id or userId provided in the request isn't valid return an error
   if (!isValidObjectId(id) || !isValidObjectId(userId)) {
     // no good, send a 500 and stop function execution
     res.status(500).send("Parameter is not a valid ObjectId");
     return;
   } // _id and userId are valid - let's carry on
+
+  // build the query to find the targeted cat document
+  var updateQuery = {
+    _id: new ObjectId(id),
+  };
+
+  // build the update part of the query to update the cat document with the userId
+  var updateContent = {
+    $addToSet: { users: { userId: new ObjectId(userId) } },
+  };
+
+  // build the query options to not upsert (i.e. create a new document if one doesn't exist)
+  // and return the modified document on completion
+  var updateOptions = { upsert: false, new: true };
 
   // now validate the userId is not already associated with the cat
   var query = Cat.find({ "users.userId": { $in: userId } });
@@ -267,17 +344,6 @@ module.exports.updateCatFeedingTimes = async function (req, res) {
   var id = req.params._id;
   // create an instance of a mongoose ObjectId to be used in the query
   var ObjectId = mongoose.Types.ObjectId;
-  // build the query to find the targeted cat document
-  var query = { _id: new ObjectId(req.params._id) };
-  // build the update part of the query to update the cat document with the feedingTimes
-  var update = {
-    $push: {
-      feedingTimes: { time: req.body.time, foodType: req.body.foodType },
-    },
-  };
-  // build the query options to not upsert (i.e. create a new document if one doesn't exist)
-  // and return the modified document on completion
-  var options = { upsert: false, new: true };
 
   // if the _id provided in the request isn't valid return an error
   if (!isValidObjectId(id)) {
@@ -285,6 +351,20 @@ module.exports.updateCatFeedingTimes = async function (req, res) {
     res.status(500).send("Parameter is not a valid ObjectId");
     return;
   } // _id is valid - let's carry on
+
+  // build the query to find the targeted cat document
+  var query = { _id: new ObjectId(req.params._id) };
+
+  // build the update part of the query to update the cat document with the feedingTimes
+  var update = {
+    $push: {
+      feedingTimes: { time: req.body.time, foodType: req.body.foodType },
+    },
+  };
+
+  // build the query options to not upsert (i.e. create a new document if one doesn't exist)
+  // and return the modified document on completion
+  var options = { upsert: false, new: true };
 
   // execute the query
   Cat.findByIdAndUpdate(query, update, options, function (err, cat) {
@@ -310,8 +390,6 @@ module.exports.deleteCat = async function (req, res) {
   var id = req.params._id;
   // create an instance of a mongoose ObjectId to be used in the query
   var ObjectId = mongoose.Types.ObjectId;
-  // build the query to find the targeted cat document
-  var query = { _id: new ObjectId(req.params._id) };
 
   // if the _id provided in the request isn't valid return an error
   if (!isValidObjectId(id)) {
@@ -319,6 +397,9 @@ module.exports.deleteCat = async function (req, res) {
     res.status(500).send("Parameter is not a valid ObjectId");
     return;
   } // _id is valid - let's carry on
+
+  // build the query to find the targeted cat document
+  var query = { _id: new ObjectId(req.params._id) };
 
   // execute the query
   Cat.findByIdAndDelete(query, function (err, cat) {

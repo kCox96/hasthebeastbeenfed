@@ -1,7 +1,60 @@
 <div class="container">
   <h1 class="text-center">Has the Beast Been Fed</h1>
   <hr class="midline" />
-  <h2 class="text-center mb-5">Our Testimonials</h2>
+  <p class="tagline">
+    A app designed to avoid the frustrations that come with a fiendishly greedy
+    cat.
+  </p>
+
+  <div class="cat-container">
+    <div class="cat">
+      <div class="ear ear--left"></div>
+      <div class="ear ear--right"></div>
+      <div class="face">
+        <div class="eye eye--left">
+          <div class="eye-pupil"></div>
+        </div>
+        <div class="eye eye--right">
+          <div class="eye-pupil"></div>
+        </div>
+        <div class="muzzle"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="get-started-container">
+    <p class="get-started-header">Join Now!</p>
+    <form
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="form.email"
+          required
+          email
+          #email="ngModel"
+        />
+        <div class="alert-danger" *ngIf="email.errors && f.submitted">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">
+            Email must be a valid email address
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Get Started</button>
+      </div>
+    </form>
+  </div>
+
+  <h2 class="text-center">Our Testimonials</h2>
 
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -22,32 +75,11 @@
                 class="img-responsive img-circle"
               />
             </div>
-            <h3>John Smith</h3>
+            <h3>Ezekiel E.</h3>
             <p>
               <q
-                >Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus aliquam leo eget enim tempus, et mattis sapien cursus.
-                Ut molestie ac urna id malesuada. Quisque porttitor dui eget
-                hendrerit ullamcorper. Morbi ac arcu vitae mi maximus dictum in
-                vitae sapien.</q
-              >
-            </p>
-          </div>
-          <div class="card">
-            <div class="card-img-container">
-              <img
-                src="https://picsum.photos/200"
-                class="img-responsive img-circle"
-              />
-            </div>
-            <h3>John Smith</h3>
-            <p>
-              <q
-                >Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus aliquam leo eget enim tempus, et mattis sapien cursus.
-                Ut molestie ac urna id malesuada. Quisque porttitor dui eget
-                hendrerit ullamcorper. Morbi ac arcu vitae mi maximus dictum in
-                vitae sapien.</q
+                >I'd be lost without HTBBF. Thank you so much for your help.
+                We've seen amazing results already.</q
               >
             </p>
           </div>
@@ -63,18 +95,19 @@
                 class="img-responsive img-circle"
               />
             </div>
-            <h3>John Smith</h3>
+            <h3>Giovanne A.</h3>
             <p>
               <q
-                >Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus aliquam leo eget enim tempus, et mattis sapien cursus.
-                Ut molestie ac urna id malesuada. Quisque porttitor dui eget
-                hendrerit ullamcorper. Morbi ac arcu vitae mi maximus dictum in
-                vitae sapien.</q
+                >HTTBF is great. The best on the net! Wow what great service, I
+                love it!.</q
               >
             </p>
           </div>
+        </div>
+      </div>
 
+      <div class="item">
+        <div class="card-container">
           <div class="card">
             <div class="card-img-container">
               <img
@@ -82,15 +115,9 @@
                 class="img-responsive img-circle"
               />
             </div>
-            <h3>John Smith</h3>
+            <h3>Jennie U.</h3>
             <p>
-              <q
-                >Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus aliquam leo eget enim tempus, et mattis sapien cursus.
-                Ut molestie ac urna id malesuada. Quisque porttitor dui eget
-                hendrerit ullamcorper. Morbi ac arcu vitae mi maximus dictum in
-                vitae sapien.</q
-              >
+              <q>Keep up the excellent work. Cat feeding tracker is great.</q>
             </p>
           </div>
         </div>
@@ -107,34 +134,4 @@
       </a>
     </div>
   </div>
-
-  <p class="get-started-header">Join Now!</p>
-  <form
-    name="form"
-    (ngSubmit)="f.form.valid && onSubmit()"
-    #f="ngForm"
-    novalidate
-  >
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        class="form-control"
-        name="email"
-        [(ngModel)]="form.email"
-        required
-        email
-        #email="ngModel"
-      />
-      <div class="alert-danger" *ngIf="email.errors && f.submitted">
-        <div *ngIf="email.errors.required">Email is required</div>
-        <div *ngIf="email.errors.email">
-          Email must be a valid email address
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <button class="btn btn-primary btn-block">Get Started</button>
-    </div>
-  </form>
 </div>

@@ -55,7 +55,7 @@
 
 /* Style navigation menu links */
 .topnav a {
-  color: var(--accent);
+  color: #fdfbfb;
   text-decoration: none;
   font-size: 17px;
   flex-direction: row;
@@ -97,6 +97,7 @@
     background-color: var(--background);
     padding: 0.5rem;
     margin: 0.2rem;
+    color: var(--base);
   }
 }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from 'src/app/shared/data.service';
 import { ICats, IFeed } from '../../models/interface';
-import { CardviewComponent } from '../cardview.component';
+import { CardviewComponent } from '../catCard.component';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
