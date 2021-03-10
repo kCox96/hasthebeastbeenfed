@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DataService } from '../shared/data.service';
 import { IUser } from '../models/interface';
 import { Router } from '@angular/router';
+import { TokenStorageService } from '../shared/tokenStorage.service';
 
 @Component({
   selector: 'app-account',
@@ -12,7 +13,11 @@ import { Router } from '@angular/router';
 export class AccountComponent {
   user: IUser;
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    private token: TokenStorageService
+  ) {}
 
   // Method to get the current logged in user details
   getUserDetails() {
@@ -47,6 +52,7 @@ export class AccountComponent {
       this.user.password = this.form.password;
     }
 
+    // Send the request
     this.dataService.updateUser(this.user).subscribe(
       (user: IUser) => {
         console.log(JSON.stringify(user));
@@ -64,9 +70,9 @@ export class AccountComponent {
     this.dataService.deleteUser().subscribe(
       () => {
         this.isDeleteSuccessful = true;
-        this.router.navigate(['login'], {
-          queryParams: { signedOut: 'true' },
-        });
+        // Sign out the user and send to homepage
+        this.token.signOut;
+        this.router.navigate(['home'], {});
       },
       (err) => {
         this.errorMessage = err.error.errorMessage;
