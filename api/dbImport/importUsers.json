@@ -1,0 +1,38 @@
+[
+  {
+    "_id": {
+      "$oid": "6048c82a51219165d0daad21"
+    },
+    "username": "catlover123",
+    "email": "catlover123@email.com",
+    "password": "$2b$10$thFos/o9LPzhJVeHgnvMoeTSsMLzdAUMP4G0jEAEXWQHTFikCtkAe",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6048c84c51219165d0daad22"
+    },
+    "username": "johnsmith",
+    "email": "js@email.com",
+    "password": "$2b$10$TY9Udg5Hq/BZRyXZXE/lRulfI7kxyeZzrtmyp3pC5fLLtI5L7lM8O",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6048c86851219165d0daad23"
+    },
+    "username": "greedycat",
+    "email": "gc@email.com",
+    "password": "$2b$10$.DpWBB8v2R7jNvgaOPbYbe58hbnO7x.rrqqsItf1jqRLOy8zxMLji",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6048c88951219165d0daad24"
+    },
+    "username": "grump",
+    "email": "grump@email.com",
+    "password": "$2b$10$TOxIgUFNN5U.We6719uH5uBJyqSnBY9g.5aJEjxZQM.auM2pwMUku",
+    "__v": 0
+  }
+]

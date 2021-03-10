@@ -1,235 +1,236 @@
-[{
-  "_id": {
-    "$oid": "602f8e4713374d1cbf70919f"
+[
+  {
+    "_id": {
+      "$oid": "602f8e4713374d1cbf70919f"
+    },
+    "name": "MaggieMay",
+    "feedingTimes": [
+      {
+        "time": {
+          "$date": "2020-02-02T09:00:00Z"
+        },
+        "foodType": "wet"
+      },
+      {
+        "time": {
+          "$date": "2020-02-02T17:00:00Z"
+        },
+        "foodType": "dry"
+      },
+      {
+        "time": {
+          "$date": "2020-02-03T09:00:00Z"
+        },
+        "foodType": "dry"
+      }
+    ],
+    "users": [
+      {
+        "userId": {
+          "$oid": "6048c82a51219165d0daad21"
+        }
+      },
+      {
+        "userId": {
+          "$oid": "6048c84c51219165d0daad22"
+        }
+      }
+    ],
+    "__v": 0
   },
-  "name": "MaggieMay",
-  "feedingTimes": [
-    {
-      "time": {
-        "$date": "2020-02-02T09:00:00Z"
-      },
-      "foodType": "wet"
+  {
+    "_id": {
+      "$oid": "6023c5c381e5ac0c5d4ee21f"
     },
-    {
-      "time": {
-        "$date": "2020-02-02T17:00:00Z"
+    "name": "Pumba",
+    "feedingTimes": [
+      {
+        "time": {
+          "$date": "2020-02-02T09:00:00Z"
+        },
+        "foodType": "wet"
       },
-      "foodType": "dry"
-    },
-    {
-      "time": {
-        "$date": "2020-02-03T09:00:00Z"
+      {
+        "time": {
+          "$date": "2020-02-02T17:00:00Z"
+        },
+        "foodType": "dry"
       },
-      "foodType": "dry"
-    }
-  ],
-  "users": [
-    {
-      "userId": {
-        "$oid": "601d5d6d9fa0736f50095003"
+      {
+        "time": {
+          "$date": "2020-02-03T09:00:00Z"
+        },
+        "foodType": "dry"
       }
-    },
-    {
-      "userId": {
-        "$oid": "601d5c380a6fa16da56ff1be"
+    ],
+    "users": [
+      {
+        "userId": {
+          "$oid": "6048c82a51219165d0daad21"
+        }
+      },
+      {
+        "userId": {
+          "$oid": "6048c84c51219165d0daad22"
+        }
       }
-    }
-  ],
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6023c5c381e5ac0c5d4ee21f"
+    ],
+    "__v": 0
   },
-  "name": "Pumba",
-  "feedingTimes": [
-    {
-      "time": {
-        "$date": "2020-02-02T09:00:00Z"
-      },
-      "foodType": "wet"
+  {
+    "_id": {
+      "$oid": "6023c5bb81e5ac0c5d4ee21e"
     },
-    {
-      "time": {
-        "$date": "2020-02-02T17:00:00Z"
+    "name": "Timon",
+    "feedingTimes": [
+      {
+        "time": {
+          "$date": "2020-02-02T09:00:00Z"
+        },
+        "foodType": "wet"
       },
-      "foodType": "dry"
-    },
-    {
-      "time": {
-        "$date": "2020-02-03T09:00:00Z"
+      {
+        "time": {
+          "$date": "2020-02-02T17:00:00Z"
+        },
+        "foodType": "dry"
       },
-      "foodType": "dry"
-    }
-  ],
-  "users": [
-    {
-      "userId": {
-        "$oid": "601d5d6d9fa0736f50095003"
+      {
+        "time": {
+          "$date": "2020-02-03T09:00:00Z"
+        },
+        "foodType": "dry"
       }
-    },
-    {
-      "userId": {
-        "$oid": "601d5c380a6fa16da56ff1be"
+    ],
+    "users": [
+      {
+        "userId": {
+          "$oid": "6048c86851219165d0daad23"
+        }
+      },
+      {
+        "userId": {
+          "$oid": "6048c88951219165d0daad24"
+        }
       }
-    }
-  ],
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6023c5bb81e5ac0c5d4ee21e"
+    ],
+    "__v": 0
   },
-  "name": "Timon",
-  "feedingTimes": [
-    {
-      "time": {
-        "$date": "2020-02-02T09:00:00Z"
-      },
-      "foodType": "wet"
+  {
+    "_id": {
+      "$oid": "60229079c33cf65847e6937d"
     },
-    {
-      "time": {
-        "$date": "2020-02-02T17:00:00Z"
+    "name": "Mr Bigglesworth",
+    "feedingTimes": [
+      {
+        "time": {
+          "$date": "2020-02-02T09:00:00Z"
+        },
+        "foodType": "wet"
       },
-      "foodType": "dry"
-    },
-    {
-      "time": {
-        "$date": "2020-02-03T09:00:00Z"
+      {
+        "time": {
+          "$date": "2020-02-02T17:00:00Z"
+        },
+        "foodType": "dry"
       },
-      "foodType": "dry"
-    }
-  ],
-  "users": [
-    {
-      "userId": {
-        "$oid": "601d5d6d9fa0736f50095003"
+      {
+        "time": {
+          "$date": "2020-02-03T09:00:00Z"
+        },
+        "foodType": "dry"
       }
-    },
-    {
-      "userId": {
-        "$oid": "601d5c380a6fa16da56ff1be"
+    ],
+    "users": [
+      {
+        "userId": {
+          "$oid": "6048c86851219165d0daad23"
+        }
+      },
+      {
+        "userId": {
+          "$oid": "6048c88951219165d0daad24"
+        }
       }
-    }
-  ],
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "60229079c33cf65847e6937d"
+    ],
+    "__v": 0
   },
-  "name": "Mr Bigglesworth",
-  "feedingTimes": [
-    {
-      "time": {
-        "$date": "2020-02-02T09:00:00Z"
-      },
-      "foodType": "wet"
+  {
+    "_id": {
+      "$oid": "60181b308e15ef9582c33e60"
     },
-    {
-      "time": {
-        "$date": "2020-02-02T17:00:00Z"
+    "name": "Snuggles",
+    "feedingTimes": [
+      {
+        "time": {
+          "$date": "2020-02-02T09:00:00Z"
+        },
+        "foodType": "wet"
       },
-      "foodType": "dry"
-    },
-    {
-      "time": {
-        "$date": "2020-02-03T09:00:00Z"
+      {
+        "time": {
+          "$date": "2020-02-02T17:00:00Z"
+        },
+        "foodType": "dry"
       },
-      "foodType": "dry"
-    }
-  ],
-  "users": [
-    {
-      "userId": {
-        "$oid": "601d5d6d9fa0736f50095003"
+      {
+        "time": {
+          "$date": "2020-02-03T09:00:00Z"
+        },
+        "foodType": "dry"
       }
-    },
-    {
-      "userId": {
-        "$oid": "601d5c380a6fa16da56ff1be"
+    ],
+    "users": [
+      {
+        "userId": {
+          "$oid": "6048c86851219165d0daad23"
+        }
+      },
+      {
+        "userId": {
+          "$oid": "6048c88951219165d0daad24"
+        }
       }
-    }
-  ],
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "60181b308e15ef9582c33e60"
+    ],
+    "__v": 0
   },
-  "name": "Snuggles",
-  "feedingTimes": [
-    {
-      "time": {
-        "$date": "2020-02-02T09:00:00Z"
-      },
-      "foodType": "wet"
+  {
+    "_id": {
+      "$oid": "60181b408e15ef9582c33e61"
     },
-    {
-      "time": {
-        "$date": "2020-02-02T17:00:00Z"
+    "name": "Muffin",
+    "feedingTimes": [
+      {
+        "time": {
+          "$date": "2020-02-02T09:00:00Z"
+        },
+        "foodType": "wet"
       },
-      "foodType": "dry"
-    },
-    {
-      "time": {
-        "$date": "2020-02-03T09:00:00Z"
+      {
+        "time": {
+          "$date": "2020-02-02T17:00:00Z"
+        },
+        "foodType": "dry"
       },
-      "foodType": "dry"
-    }
-  ],
-  "users": [
-    {
-      "userId": {
-        "$oid": "601d5d6d9fa0736f50095003"
+      {
+        "time": {
+          "$date": "2020-02-03T09:00:00Z"
+        },
+        "foodType": "dry"
       }
-    },
-    {
-      "userId": {
-        "$oid": "601d5c380a6fa16da56ff1be"
-      }
-    }
-  ],
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "60181b408e15ef9582c33e61"
-  },
-  "name": "Muffin",
-  "feedingTimes": [
-    {
-      "time": {
-        "$date": "2020-02-02T09:00:00Z"
+    ],
+    "users": [
+      {
+        "userId": {
+          "$oid": "6048c82a51219165d0daad21"
+        }
       },
-      "foodType": "wet"
-    },
-    {
-      "time": {
-        "$date": "2020-02-02T17:00:00Z"
-      },
-      "foodType": "dry"
-    },
-    {
-      "time": {
-        "$date": "2020-02-03T09:00:00Z"
-      },
-      "foodType": "dry"
-    }
-  ],
-  "users": [
-    {
-      "userId": {
-        "$oid": "601d5d6d9fa0736f50095003"
+      {
+        "userId": {
+          "$oid": "6048c84c51219165d0daad22"
+        }
       }
-    },
-    {
-      "userId": {
-        "$oid": "601d5c380a6fa16da56ff1be"
-      }
-    }
-  ],
-  "__v": 0
-}
+    ],
+    "__v": 0
+  }
 ]
