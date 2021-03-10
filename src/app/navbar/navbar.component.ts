@@ -54,7 +54,6 @@ export class NavbarComponent {
       }
     });
   }
-
   onSignOut(): void {
     this.token.signOut();
     // take user to login page on logout

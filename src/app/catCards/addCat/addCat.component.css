@@ -4,8 +4,13 @@
 }
 
 .cataddtext {
+  margin: 1.5rem;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 1.5rem;
   text-align: center;
-  padding: 0.5rem;
 }
 
 .catadd {

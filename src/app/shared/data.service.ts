@@ -34,6 +34,20 @@ export class DataService {
       .pipe(catchError(this.handleError));
   }
 
+  //Get cat for catEdit
+  getCat(catId: string): Observable<ICat> {
+    return this.http
+      .get<ICat>(this.APIUrl + 'cat/' + catId, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  //Get cat for catEdit
+  replaceCat(catId: string, cat: ICats): Observable<any> {
+    return this.http
+      .post<any>(this.APIUrl + 'cats/replace/' + catId, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
   //create cat for addcat page
   createCat(cat: ICat): Observable<any> {
     var userId: string;

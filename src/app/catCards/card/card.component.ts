@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { DataService } from 'src/app/shared/data.service';
 import { ICats, IFeed } from '../../models/interface';
 import { CardviewComponent } from '../catCard.component';
@@ -10,7 +10,8 @@ import { CardviewComponent } from '../catCard.component';
 export class CardComponent implements OnInit {
   constructor(
     private dataService: DataService,
-    private cardview: CardviewComponent
+    private cardview: CardviewComponent,
+    public elementRef: ElementRef
   ) {}
   //passing gets cat object from cardview
   private _cats: ICats[] = [];

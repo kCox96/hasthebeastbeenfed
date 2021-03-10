@@ -1,5 +1,23 @@
 <div class="cat-edit">
   Cat Name:
-  <input #catname type="text" placeholder="{{ cat.name }}" />
+  <input #catname type="text" placeholder="{{ cat?.name }}" />
+  <div class="feedingtable">
+    <div *ngFor="let feed of cat.feedingTimes; index as i" class="feeding">
+      <div class="feed-data">
+        <input
+          class="feed-input"
+          type="datetime-local"
+          value="{{ feed.time | date: 'yyyy-MM-ddTHH:mm' }}"
+        />
+        <select id="cars" name="cars">
+          <option value="Basic">Basic</option>
+          <option value="Dry">Dry</option>
+          <option value="Wet">Wet</option>
+          <option value="Medicine">Medicine</option>
+        </select>
+      </div>
+      <button class="feed-delete" (click)="DeleteFeed(i)">Delete</button>
+    </div>
+  </div>
   <button type="submit">Submit</button>
 </div>

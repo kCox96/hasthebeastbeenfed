@@ -4,9 +4,42 @@
   display: flex;
   flex-wrap: wrap;
   padding: 1.5rem;
+  height: 75vh;
 }
+
 .cat-edit input,
-button {
+select {
+  width: 200px;
+}
+
+.cat-edit button {
+  width: 65%;
+}
+
+.feed-data {
+  margin: 0.9rem;
+}
+
+.feedingtable {
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  padding: 0.5rem;
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+}
+
+.feeding {
   flex-basis: 100%;
-  margin-top: 0.5rem;
+  display: flex;
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  padding: 0.9rem;
+}
+
+@media (min-width: 500px) {
+  .cat-edit {
+    width: 500px;
+    margin: auto;
+  }
 }
