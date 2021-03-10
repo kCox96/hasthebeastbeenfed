@@ -65,7 +65,7 @@ export class AccountComponent {
       () => {
         this.isDeleteSuccessful = true;
         this.router.navigate(['login'], {
-          queryParams: { registered: 'false' },
+          queryParams: { signedOut: 'true' },
         });
       },
       (err) => {
