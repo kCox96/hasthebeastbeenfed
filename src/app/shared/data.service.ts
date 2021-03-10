@@ -92,7 +92,11 @@ export class DataService {
   }
 
   // Delete user for account page
-  deleteUser(userId: string): Observable<any> {
+  deleteUser(): Observable<any> {
+    var userId: string;
+    this.Token.userId.subscribe((data: string) => {
+      userId = data;
+    });
     return this.http
       .delete<any>(this.APIUrl + 'users/' + userId, this.httpOptions)
       .pipe(catchError(this.handleError));
