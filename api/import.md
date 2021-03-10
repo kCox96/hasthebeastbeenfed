@@ -55,7 +55,7 @@ _Taken from - (https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windo
 
 4. Run the below command to import the users collection to a database named htbbf
 
-   `mongoimport --db 'htbbf' --collection 'users' --jsonArray './api/dbImport/importUsersjson'`
+   `mongoimport --db 'htbbf' --collection 'users' --jsonArray './api/dbImport/importUsers.json'`
 
 ### Windows
 
@@ -67,4 +67,4 @@ _Taken from - (https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windo
 
 4. Run the below command to import the users collection to a database named htbbf
 
-   `mongoimport --db 'htbbf' --collection 'users' --jsonArray '~\api\dbImport\importUsersjson'`
+   `mongoimport --db 'htbbf' --collection 'users' --jsonArray '~\api\dbImport\importUsers.json'`
