@@ -24,3 +24,11 @@ export interface IFeed {
 export interface IUserID {
   userId: string;
 }
+
+// For account page
+export interface IUser {
+  _id?: string;
+  username: string;
+  email: string;
+  password: string;
+}
