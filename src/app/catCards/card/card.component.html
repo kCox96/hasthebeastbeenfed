@@ -5,7 +5,9 @@
       ><img src="../../../assets/pencil.svg" alt=""
     /></a>
     <div>{{ cat.name }}</div>
-    <img src="../../../assets/dots.svg" alt="" />
+    <a>
+      <!-- <img src="../../../assets/dots.svg" alt="" /> from removed feature -->
+    </a>
   </div>
   <div class="card-content">
     <div class="card-image">
@@ -26,7 +28,18 @@
     </div>
   </div>
   <div class="card-bottom">
-    <button (click)="doFeedCat(cat._id)" type="submit">Feed Me</button>
+    <select
+      #feedtype
+      value="{{ cat.feedingTimes[cat.feedingTimes.length - 1]?.foodType }}"
+    >
+      <option value="Basic">Basic</option>
+      <option value="Dry">Dry</option>
+      <option value="Wet">Wet</option>
+      <option value="Medicine">Medicine</option>
+    </select>
+    <button (click)="doFeedCat(cat._id, feedtype.value)" type="submit">
+      Feed
+    </button>
   </div>
 </section>
 

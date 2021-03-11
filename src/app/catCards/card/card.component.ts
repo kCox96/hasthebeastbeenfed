@@ -25,13 +25,15 @@ export class CardComponent implements OnInit {
   }
   catslist: ICats[] = [];
 
-  doFeedCat(catId: string, feed?: IFeed) {
-    if (!feed) {
-      var date = new Date();
-      var feed = {} as IFeed;
-      feed.time = date.toJSON();
-      feed.foodType = 'Basic';
+  doFeedCat(catId: string, type: string): void {
+    var date = new Date();
+    var feed = {} as IFeed;
+    feed.time = date.toJSON();
+    if (type === '') {
+      type = 'Basic';
     }
+    feed.foodType = type;
+    console.log(feed);
     this.dataService.feedCat(catId, feed).subscribe((data) => {});
     this.cardview.getTheCats();
   }

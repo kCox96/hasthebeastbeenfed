@@ -15,7 +15,7 @@
           value="{{ feed.time | date: 'yyyy-MM-ddTHH:mm' }}"
           (blur)="UpdateTime($event, i)"
         />
-        <select id="cars" name="cars" (change)="UpdateType($event, i)">
+        <select (change)="UpdateType($event, i)" value="{{ feed.foodType }}">
           <option value="Basic">Basic</option>
           <option value="Dry">Dry</option>
           <option value="Wet">Wet</option>
