@@ -41,10 +41,10 @@ export class DataService {
       .pipe(catchError(this.handleError));
   }
 
-  //Get cat for catEdit
-  replaceCat(catId: string, cat: ICats): Observable<any> {
+  //replace the cat
+  replaceCat(cat: ICat): Observable<any> {
     return this.http
-      .post<any>(this.APIUrl + 'cats/replace/' + catId, this.httpOptions)
+      .post<any>(this.APIUrl + 'cats/replace/' + cat._id, cat, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 
@@ -70,16 +70,6 @@ export class DataService {
   feedCat(catId: string, feed: IFeed): Observable<any> {
     return this.http
       .put<IFeed>(this.APIUrl + 'cats/feeding/' + catId, feed, this.httpOptions)
-      .pipe(catchError(this.handleError));
-  }
-
-  UpdateCat(cat: ICat): Observable<any> {
-    var userId: string;
-    this.Token.userId.subscribe((data: string) => {
-      userId = data;
-    });
-    return this.http
-      .post<any>(this.APIUrl + 'cats/' + userId, cat, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

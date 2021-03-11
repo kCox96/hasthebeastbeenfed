@@ -29,12 +29,35 @@ export class CateditComponent implements OnInit {
     this.cat.feedingTimes.splice(index, 1);
   }
 
-  UpdateFeed(index, type?, time?) {
-    if (type) {
-      this.cat.feedingTimes[index].foodType = type;
-    }
-    if (time) {
-      this.cat.feedingTimes[index].time = time;
+  UpdateName(event: any) {
+    this.cat.name;
+  }
+
+  UpdateTime(event: any, index) {
+    this.cat.feedingTimes[index].time = event.target.value;
+    this.cat.feedingTimes.sort(this.CompareFeed);
+    console.log(event);
+  }
+
+  UpdateType(event: any, index) {
+    this.cat.feedingTimes[index].foodType = event.target.value;
+  }
+
+  CompareFeed(a, b) {
+    if (a.time > b.time) return 1;
+    if (a.time < b.time) return -1;
+    return 0;
+  }
+
+  UpdateCat(cat: ICat) {
+    this.dataService.replaceCat(this.cat).subscribe((data) => {});
+    window.location.href = './cardview';
+  }
+
+  DeleteCat(catId: string) {
+    if (catId) {
+      this.dataService.deleteCat(catId).subscribe((data) => {});
+      window.location.href = './cardview';
     }
   }
 

@@ -7,14 +7,13 @@
   margin: 1.5rem;
   font-size: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  height: 1.5rem;
+  height: 2rem;
   text-align: center;
 }
 
 .catadd {
-  background-color: var(--base);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;

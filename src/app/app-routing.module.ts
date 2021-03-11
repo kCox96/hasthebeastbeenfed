@@ -12,8 +12,6 @@ import { AuthGuard } from './shared/auth.guard';
 import { HomepageComponent } from './homepage/homepage.component';
 import { CateditComponent } from './editCat/editCat.component';
 
-// need to add https://angular.io/api/router/CanActivate
-
 export const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomepageComponent },
   { path: 'home', pathMatch: 'full', component: HomepageComponent },

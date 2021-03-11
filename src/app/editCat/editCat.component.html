@@ -1,23 +1,32 @@
 <div class="cat-edit">
-  Cat Name:
-  <input #catname type="text" placeholder="{{ cat?.name }}" />
+  <div class="catnameedit">
+    <label for="name">Cat Name: </label>
+    <input #catname type="text" placeholder="{{ cat?.name }}" id="name" />
+  </div>
   <div class="feedingtable">
-    <div *ngFor="let feed of cat.feedingTimes; index as i" class="feeding">
+    <div *ngIf="!cat?.feedingTimes.length" class="nocats">
+      Cats not been fed yet.
+    </div>
+    <div *ngFor="let feed of cat?.feedingTimes; index as i" class="feeding">
       <div class="feed-data">
         <input
           class="feed-input"
           type="datetime-local"
           value="{{ feed.time | date: 'yyyy-MM-ddTHH:mm' }}"
+          (blur)="UpdateTime($event, i)"
         />
-        <select id="cars" name="cars">
+        <select id="cars" name="cars" (change)="UpdateType($event, i)">
           <option value="Basic">Basic</option>
           <option value="Dry">Dry</option>
           <option value="Wet">Wet</option>
           <option value="Medicine">Medicine</option>
         </select>
+        <button class="feed-delete" (click)="DeleteFeed(i)">Delete</button>
       </div>
-      <button class="feed-delete" (click)="DeleteFeed(i)">Delete</button>
     </div>
   </div>
-  <button type="submit">Submit</button>
+  <button type="submit" (click)="UpdateCat(cat)">Save</button>
+  <div class="catdelete">
+    <button class="cat-delete" (click)="DeleteCat(cat._id)">Delete Cat</button>
+  </div>
 </div>
