@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { TokenStorageService } from './tokenStorage.service';
-import { ICats, ICat, IFeed } from '../models/interface';
+import { ICats, ICat, IFeed, IUser } from '../models/interface';
 
 @Injectable()
 export class DataService {
@@ -70,6 +70,39 @@ export class DataService {
   feedCat(catId: string, feed: IFeed): Observable<any> {
     return this.http
       .put<IFeed>(this.APIUrl + 'cats/feeding/' + catId, feed, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  // Get user details for account page
+  getUser(): Observable<IUser> {
+    var userId: string;
+    this.Token.userId.subscribe((data: string) => {
+      userId = data;
+    });
+    return this.http
+      .get<IUser>(this.APIUrl + 'users/' + userId, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  // Update user details for account page
+  updateUser(user: IUser): Observable<any> {
+    var userId: string;
+    this.Token.userId.subscribe((data: string) => {
+      userId = data;
+    });
+    return this.http
+      .post<any>(this.APIUrl + 'users/' + userId, user, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  // Delete user for account page
+  deleteUser(): Observable<any> {
+    var userId: string;
+    this.Token.userId.subscribe((data: string) => {
+      userId = data;
+    });
+    return this.http
+      .delete<any>(this.APIUrl + 'users/' + userId, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

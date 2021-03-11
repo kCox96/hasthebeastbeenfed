@@ -30,26 +30,23 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     // Handle route redirect from homepage
-    this.route.queryParams.subscribe((params) => {
-      if (params.userEmail !== null && params.userEmail !== undefined) {
-        this.userEmail = JSON.stringify(params.userEmail);
-        console.log('queryParams user email' + this.userEmail);
-        this.redirectFromHompage = true;
-        console.log('redirect from homepage value ' + this.redirectFromHompage);
-      }
-    });
+    // this.route.queryParams.subscribe((params) => {
+    //   if (params.userEmail !== null && params.userEmail !== undefined) {
+    //     this.userEmail = JSON.stringify(params.userEmail);
+    //     console.log('queryParams user email' + this.userEmail);
+    //     this.redirectFromHompage = true;
+    //     console.log('redirect from homepage value ' + this.redirectFromHompage);
+    //   }
+    // });
   }
 
   onSubmit(): void {
     // DEBUGGING - REMOVE BEFORE SUBMISSION
 
     console.log('signup on submit called');
-    let email = this.form.email;
+    const email = this.form.email;
     const username = this.form.username;
     const password = this.form.password;
-    if (this.redirectFromHompage == true) {
-      email = this.userEmail;
-    }
 
     this.auth.signup(username, email, password).subscribe(
       (data) => {
