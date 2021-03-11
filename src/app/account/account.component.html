@@ -16,7 +16,7 @@
       minlength="3"
       maxlength="20"
       #username="ngModel"
-      placeholder="{{ user.username }}"
+      placeholder="{{ user?.username }}"
     />
   </div>
   <div class="form-group">
@@ -28,7 +28,7 @@
       [(ngModel)]="form.email"
       email
       #email="ngModel"
-      placeholder="{{ user.email }}"
+      placeholder="{{ user?.email }}"
     />
   </div>
   <div class="form-group">
