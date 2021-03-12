@@ -20,6 +20,7 @@
       <a *ngIf="!loggedIn" href="/login">Login</a>
       <a *ngIf="!loggedIn" href="/signup">Sign Up</a>
       <!-- Pipe observable value to subscribe to it -->
+      <a *ngIf="isLoggedIn$ | async" href="/cardview">Cat View</a>
       <a *ngIf="isLoggedIn$ | async" href="/account">Account</a>
       <a *ngIf="isLoggedIn$ | async" (click)="onSignOut()">Sign Out</a>
     </div>

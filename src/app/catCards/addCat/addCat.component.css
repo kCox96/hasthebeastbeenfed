@@ -4,12 +4,16 @@
 }
 
 .cataddtext {
+  margin: 1.5rem;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
   text-align: center;
-  padding: 0.5rem;
 }
 
 .catadd {
-  background-color: var(--base);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;

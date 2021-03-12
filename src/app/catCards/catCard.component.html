@@ -1,1 +1,6 @@
-<app-card [cats]="cats" class="cardholder"></app-card>
+<app-card
+  #CardHolder
+  [cats]="cats"
+  class="cardholder"
+  (wheel)="onWheel($event)"
+></app-card>
