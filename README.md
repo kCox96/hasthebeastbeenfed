@@ -45,11 +45,11 @@ _Taken from - (https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windo
 2. Navigate to the root level of the cloned repository (i.e. C:\Users\username\code\hasthebeastbeenfed) in an administrator command prompt
 3. Run the below command to import the cats collection to a database named htbbf (Replacing the username with your own username)
 
-   `C:\Users\username\Downloads\mongodb-database-tools-windows-x86_64-100.3.0\bin\mongoimport.exe --db 'htbbf' --collection 'cats' --jsonArray "api\dbImport\importCats.json"`
+   `C:\Users\username\Downloads\mongodb-database-tools-windows-x86_64-100.3.0\bin\mongoimport.exe --db=htbbf --collection=cats --jsonArray "api\dbImport\importCats.json"`
 
 4. Run the below command to import the users collection to a database named htbbf (Replacing the username with your own username)
 
-   `C:\Users\username\Downloads\mongodb-database-tools-windows-x86_64-100.3.0\bin\mongoimport.exe --db 'htbbf' --collection 'cats' --jsonArray "api\dbImport\importUsers.json"`
+   `C:\Users\username\Downloads\mongodb-database-tools-windows-x86_64-100.3.0\bin\mongoimport.exe --db=htbbf --collection=users --jsonArray "api\dbImport\importUsers.json"`
 
 ### Dependencies (Mac OS X)
 
