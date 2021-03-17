@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.3.
 
-The backend of this project was generated with [nodejs]() version 14.15.4, [express]() and [MongoDB]().
+The backend of this project was generated with [nodejs](https://nodejs.org/en/) version 14.15.4, [express](https://expressjs.com/) and [MongoDB](https://www.mongodb.com/).
 
 ## Development Team
 
@@ -12,26 +12,90 @@ The backend of this project was generated with [nodejs]() version 14.15.4, [expr
 
 ## Application Summary
 
-## Launching the App
+### Dependencies (Windows)
 
-_secret step_
-at the root level of the application create a file called .env
-and paste this in TOKEN_SECRET = 903847209uoidjdflkdsncldfjwifoewlke
-_need step to launch mongo_
+Ensure you have the latest LTS version of NodeJS installed - https://nodejs.org/en/
 
-Run `npm install` at the root level to install all the needed dependencies.
+Open an administrator command prompt and run the command `npm install -g angular-cli`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+**Follow the instructions below to install MongoDB:**
 
-Run `npm start` for the node backend.
+1. Download the MongoDB Community installer from https://www.mongodb.com/try/download/community?tck=docs_server
+   - In the Version dropdown, select the version of MongoDB to download
+   - In the Platform dropdown, select Windows
+   - In the Package dropdown, select msi
+   - Click Download
+2. Run the MongoDB installer
+   - Go to the directory where you downloaded the MongoDB installer (.msi file). By default, this is your Downloads directory
+   - Double-click the .msi file
+3. Follow the MongoDB Community Edition installation wizard.
+   - Choose Setup Type - Complete - Click "Next >"
+   - Check the "Install MongoD as a service" checkbox and accept the defaults - Click "Next >"
+   - Install MongoDB Compass (optional) Click "Next >"
+4. Click "Install"
+5. Download the MongoDB tools from https://www.mongodb.com/try/download/database-tools?tck=docs_databasetools
+6.  Go to the directory where you downloaded the MongoDB tools (.zip file). By default, this is your Downloads directory
+7.  Right click the .zip file and click "Extract All" then click "Extract".
+
+_Taken from - (https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)_
+
+**Follow the instructions below to import a basic database:**
+
+1. Clone the repository from https://github.com/kCox96/hasthebeastbeenfed
+2. Navigate to the root level of the cloned repository (i.e. C:\Users\username\code\hasthebeastbeenfed) in an administrator command prompt
+3. Run the below command to import the cats collection to a database named htbbf (Replacing the username with your own username)
+
+   `C:\Users\username\Downloads\mongodb-database-tools-windows-x86_64-100.3.0\bin\mongoimport.exe --db 'htbbf' --collection 'cats' --jsonArray "api\dbImport\importCats.json"`
+
+4. Run the below command to import the users collection to a database named htbbf (Replacing the username with your own username)
+
+   `C:\Users\username\Downloads\mongodb-database-tools-windows-x86_64-100.3.0\bin\mongoimport.exe --db 'htbbf' --collection 'cats' --jsonArray "api\dbImport\importUsers.json"`
+
+### Dependencies (Mac OS X)
+
+Ensure you have the latest LTS version of NodeJS installed - https://nodejs.org/en/
+
+Open a terminal and run the command `npm install -g angular-cli`
+
+**Follow the instructions below to install MongoDB:**
+
+1. Open a terminal instance
+2. Run the command xcode-select --install
+3. Run the command brew tap mongodb/brew
+4. Run the command brew install mongodb-community@4.4
+5. Finally run the command brew services start mongodb-community@4.4 to start MongoDB
+
+Taken from - (https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
+
+**Follow the instructions below to import a basic database:**
+
+1. Clone the repository from https://github.com/kCox96/hasthebeastbeenfed
+2. Navigate to the root level of the cloned repository (i.e. /Users/username/code/hasthebeastbeenfed) in a terminal
+3. Run the below command to import the cats collection to a database named htbbf
+
+   `mongoimport --db 'htbbf' --collection 'cats' --jsonArray './api/dbImport/importCats.json'`
+
+4. Run the below command to import the users collection to a database named htbbf
+
+   `mongoimport --db 'htbbf' --collection 'users' --jsonArray './api/dbImport/importUsers.json'`
+
+## Running the app
+
+1. Open an administrator command prompt (Windows)/terminal (Mac OS X) and navigate to the folder where you cloned the repository to (i.e. C:\Users\Phil\Downloads\hasthebeastbeenfed).
+2. Run `npm install` at the root level to install all the needed dependencies.
+3. Run `ng serve` to run the Angular frontend.
+4. Open another administrator command prompt (Windows)/terminal (Mac OS X) and navigate to the folder where you cloned the repository to (i.e. C:\Users\username\Downloads\hasthebeastbeenfed).
+5. Run `npm start` for the node backend.
+6. Open a web browser (Google Chrome is recommended) and navigate to `http://localhost:4200/` for the home page.
 
 ## Technology Stack
 
 - Angular 11: Front end framework. Business logic is handled within the framework using Typescript.
-- NodeJs and Express: Create the server and connection to database.
-- MongoDb: Data retention.
+- NodeJS and Express: Web server, routing, API logic, controllers, authentication and database connection.
+- MongoDB: Data retention.
 - Slack: Team communications.
 - Github: Version control.
+- Visual Studio Code: Integrated Development Environment
 
 ## Work Approach
 
