@@ -35,12 +35,9 @@ Run `npm start` for the node backend.
 
 ## Work Approach
 
-- Agile (include evidence of tickets)?
-- Introduce feature freeze at some point?
+- Agile
 - Merge reviews to prevent breaking main
 - Weekly reviews
-
-## User Authentication
 
 ## Security Points
 

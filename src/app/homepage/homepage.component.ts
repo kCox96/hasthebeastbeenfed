@@ -15,10 +15,10 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    const email = this.form.email;
-    console.log('on submit email value ' + email);
-    this.router.navigate(['signup'], {
-      queryParams: { userEmail: email },
-    });
+    // const email = this.form.email;
+    // console.log('on submit email value ' + email);
+    // this.router.navigate(['signup'], {
+    //   queryParams: { userEmail: email },
+    // });
   }
 }

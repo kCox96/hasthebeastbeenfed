@@ -19,8 +19,8 @@ export class SignupComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
-  userEmail: string;
-  redirectFromHompage = false;
+
+
 
   constructor(
     private auth: AuthenticationService,
@@ -29,29 +29,15 @@ export class SignupComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Handle route redirect from homepage
-    // this.route.queryParams.subscribe((params) => {
-    //   if (params.userEmail !== null && params.userEmail !== undefined) {
-    //     this.userEmail = JSON.stringify(params.userEmail);
-    //     console.log('queryParams user email' + this.userEmail);
-    //     this.redirectFromHompage = true;
-    //     console.log('redirect from homepage value ' + this.redirectFromHompage);
-    //   }
-    // });
   }
 
   onSubmit(): void {
-    // DEBUGGING - REMOVE BEFORE SUBMISSION
-
-    console.log('signup on submit called');
     const email = this.form.email;
     const username = this.form.username;
     const password = this.form.password;
 
     this.auth.signup(username, email, password).subscribe(
       (data) => {
-        //DEBUGGING - REMOVE BEFORE SUBMISSION
-        console.log('login submit request data' + JSON.stringify(data));
         this.isSuccessful = true;
         this.isSignUpFailed = false;
       },

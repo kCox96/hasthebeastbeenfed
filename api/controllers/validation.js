@@ -1,5 +1,5 @@
 const Joi = require("@hapi/joi");
-
+// validate inputs for signup and login
 module.exports.signupValidation = (data) => {
     const schema = Joi.object({
         username: Joi.string().min(3).max(255).required(),

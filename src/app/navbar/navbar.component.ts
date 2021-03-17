@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '../shared/authentication.service';
 import { TokenStorageService } from '../shared/tokenStorage.service';
-import jwt_decode from 'jwt-decode';
+
 
 @Component({
   selector: 'app-navbar',
@@ -39,8 +39,6 @@ export class NavbarComponent {
       // set username and trim double quotes
       if (data !== null) {
         this.username = data.replace(/['"]+/g, '');
-        // DEBUGGING
-        console.log('user data at navbar ' + this.username);
       }
     });
 
@@ -49,8 +47,6 @@ export class NavbarComponent {
     this.userId$.subscribe((data: any) => {
       if (data !== null) {
         this.userId = data;
-        // DEBUGGING
-        console.log('user id at navbar ' + this.userId);
       }
     });
   }
@@ -58,9 +54,5 @@ export class NavbarComponent {
     this.token.signOut();
     // take user to login page on logout
     this.router.navigate(['login'], { queryParams: { signedOut: 'true' } });
-  }
-  //DEBUGGING METHOD - REMOVE BEFORE SUBMISSION
-  reloadPage(): void {
-    window.location.reload();
   }
 }

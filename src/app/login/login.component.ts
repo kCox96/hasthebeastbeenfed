@@ -61,27 +61,21 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // DEBUGGING - REMOVE BEFORE SUBMISSION
-    console.log('login on submit called');
     // Pull values from form
     const { email, password } = this.form;
 
     // use auth login method to login with credentials pulled from form
     this.auth.login(email, password).subscribe(
       (data) => {
-        // DEBUGGING - REMOVE BEFORE SUBMISSION
-        console.log('login data' + JSON.stringify(data));
-        console.log('token value ' + JSON.stringify(data));
         // Save token and user data using method defined in token service
         this.tokenStorage.saveToken(data.data.token);
         console.log('token value of user ' + data.data.token);
-        // this.tokenStorage.saveUsername(data.data.token);
         // Set this flag for error handling and displaying error information on client side
         this.isLoginFailed = false;
 
         // navigate user to account screen when they've logged in
         this.router.navigate(['cardview']);
-        // this.reloadPage();
+
       },
       // error handling
       (err) => {
@@ -91,7 +85,5 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-  reloadPage(): void {
-    window.location.reload();
-  }
+
 }

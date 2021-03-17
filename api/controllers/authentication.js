@@ -6,7 +6,11 @@ const User = mongoose.model("User");
 const Cat = mongoose.model("Cat"); // needed to remove the userId from any associated cat on deletion
 
 /**
- *  Registration controller
+ * POST /api/signup
+ * @summary creates a new user
+ * @param {email, username, password} req
+ * @response 200 - OK
+ * @response 500 - Error
  */
 module.exports.createUser = async function (req, res) {
   var user = new User();
@@ -34,12 +38,15 @@ module.exports.createUser = async function (req, res) {
     }
     // all good, return 200 and log success
     res.status(200);
-    // FOR DEBUGGING
     res.send("complete");
   });
 };
 /**
- *  Login controller
+ * GET /api/login
+ * @summary logs in a user
+ * @param {email, password} req
+ * @response 200 - OK
+ * @response 500 - Error
  */
 module.exports.login = async function (req, res) {
   // validate input
@@ -59,14 +66,7 @@ module.exports.login = async function (req, res) {
   // if password isn't valid, return error
   if (!validPassword) {
     return res.status(400).json({ error: "Password is wrong" });
-  }
-  // all good, return 200 and log success
-  //  res.json({
-  //   error: null,
-  //   data: {
-  //     message: "Login successful",
-  //   },
-  // });
+  };
 
   // create jwt token
   const token = jwt.sign(
@@ -79,15 +79,9 @@ module.exports.login = async function (req, res) {
     { expiresIn: "1h" }
   );
 
-  // set token session in the HTTP Response body
-  //       res.status(200).json({
-  //       idToken: jwtBearerToken,
-  //       expiresIn: 300
-  // });
-
+  // set token header
   res.header("auth-token", token).json({
     error: null,
-    // FOR DEBUGGING - REMOVE BEFORE SUBMIT
     data: {
       token,
     },
