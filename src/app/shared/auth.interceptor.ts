@@ -38,6 +38,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     if (token)
     // return modified request
+    JSON.stringify(authReq);
     return next.handle(authReq);
   }
 }
