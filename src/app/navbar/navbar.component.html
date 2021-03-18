@@ -7,7 +7,7 @@
       <div class="fancy">Has The Beast Been Fed?</div>
     </a>
 
-    <div *ngIf="loggedIn && username !== null" class="user-greeting">
+    <div *ngIf="isLoggedIn$ | async" class="user-greeting">
       Hello, {{ username }}
     </div>
     <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->

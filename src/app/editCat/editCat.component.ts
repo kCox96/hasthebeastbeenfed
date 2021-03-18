@@ -36,7 +36,6 @@ export class CateditComponent implements OnInit {
   UpdateTime(event: any, index) {
     this.cat.feedingTimes[index].time = event.target.value;
     this.cat.feedingTimes.sort(this.CompareFeed);
-    console.log(event);
   }
 
   UpdateType(event: any, index) {

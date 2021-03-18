@@ -11,7 +11,6 @@ module.exports.verifyToken = (req, res, next) => {
 
   // verify token and secret
   try {
-    console.log(token);
     const verfied = jwt.verify(token, process.env.TOKEN_SECRET);
     req.user = verified;
     // continue flow

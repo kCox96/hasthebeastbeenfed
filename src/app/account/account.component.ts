@@ -55,7 +55,7 @@ export class AccountComponent {
     // Send the request
     this.dataService.updateUser(this.user).subscribe(
       (user: IUser) => {
-        console.log(JSON.stringify(user));
+
         this.isSuccessful = true;
       },
       (err) => {

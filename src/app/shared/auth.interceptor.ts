@@ -26,12 +26,9 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    // DEBUGGING - REMOVE BEFORE SUBMISSION
-    console.log('intercept service has been called.');
+
     let authReq = req;
     const token = this.tokenService.getToken();
-    // DEBUGGING - REMOVE BEFORE SUBMISSION
-    console.log('Token value at intercept service ' + token);
     // if token exists, append token to request header
     if (token !== null) {
       authReq = req.clone({
@@ -39,16 +36,9 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
 
-    // if (isTokenExpired){
-    // DEBUGGING - REMOVE BEFORE SUBMISSION
-    //     console.log("token expired");
-    //     this.router.navigate(['login'], {queryParams : { sessionExpired: 'true'}});
-    // }
-
     if (token)
-      // DEBUGGING - REMOVE BEFORE SUBMISSION
-      console.log('auth request' + JSON.stringify(authReq));
     // return modified request
+    JSON.stringify(authReq);
     return next.handle(authReq);
   }
 }

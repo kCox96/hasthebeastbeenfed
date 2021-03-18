@@ -40,7 +40,12 @@ export class NavbarComponent {
       if (data !== null) {
         this.username = data.replace(/['"]+/g, '');
       }
+    },
+
+    (err) => {
+      console.log("error" + JSON.stringify(err));
     });
+
 
     // HOW TO USE GET USER ID SERVICE
     this.userId$ = await this.token.userId;
@@ -51,6 +56,7 @@ export class NavbarComponent {
     });
   }
   onSignOut(): void {
+    location.reload();
     this.token.signOut();
     // take user to login page on logout
     this.router.navigate(['login'], { queryParams: { signedOut: 'true' } });

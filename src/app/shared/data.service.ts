@@ -108,7 +108,7 @@ export class DataService {
 
   //error handler for all the above functions
   private handleError(error: any) {
-    console.error('server error:', error);
+
     if (error.error instanceof Error) {
       const errMessage = error.error.message;
       return throwError(errMessage);
