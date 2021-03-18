@@ -67,6 +67,8 @@ export class LoginComponent implements OnInit {
     // use auth login method to login with credentials pulled from form
     this.auth.login(email, password).subscribe(
       (data) => {
+        // DEBUGGING
+        console.log(data);
         // Save token and user data using method defined in token service
         this.tokenStorage.saveToken(data.data.token);
         // Set this flag for error handling and displaying error information on client side
