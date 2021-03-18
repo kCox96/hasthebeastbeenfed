@@ -16,7 +16,7 @@ The backend of this project was generated with [nodejs](https://nodejs.org/en/) 
 
 Ensure you have the latest LTS version of NodeJS installed - https://nodejs.org/en/
 
-Open an administrator command prompt and run the command `npm install -g angular-cli`
+Open an administrator command prompt and run the command `npm install -g @angular/cli@latest`
 
 **Follow the instructions below to install MongoDB:**
 
@@ -55,7 +55,7 @@ _Taken from - (https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windo
 
 Ensure you have the latest LTS version of NodeJS installed - https://nodejs.org/en/
 
-Open a terminal and run the command `npm install -g angular-cli`
+Open a terminal and run the command `npm install -g @angular/cli@latest`
 
 **Follow the instructions below to install MongoDB:**
 
