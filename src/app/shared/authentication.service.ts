@@ -35,8 +35,6 @@ export class AuthenticationService {
   }
 
   login(email: string, password: string): Observable<any> {
-    // DEBUGGING - REMOVE BEFORE SUBMISSION
-    console.log('authentication service - login post called');
     // set user state to logged in
     this.isLoggedIn.next(true);
     return this.http.post<UserLogin>(
@@ -50,8 +48,6 @@ export class AuthenticationService {
   }
 
   signup(username: string, email: string, password: string): Observable<any> {
-    // DEBUGGING - REMOVE BEFORE SUBMISSION
-    console.log('authentication service - signup called');
     return this.http.post(
       AUTH_BASE + 'signup',
       {
@@ -64,8 +60,6 @@ export class AuthenticationService {
   }
 
   public get isUserLoggedIn() {
-    //DEBUGGING - REMOVE BEFORE SUBMISSION
-    console.log('isUserLoggedIn called');
     // return the value of user login state as an observable
     return this.isLoggedIn.asObservable();
   }

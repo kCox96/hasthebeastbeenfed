@@ -33,7 +33,6 @@ export class CardComponent implements OnInit {
       type = 'Basic';
     }
     feed.foodType = type;
-    console.log(feed);
     this.dataService.feedCat(catId, feed).subscribe((data) => {});
     this.cardview.getTheCats();
   }

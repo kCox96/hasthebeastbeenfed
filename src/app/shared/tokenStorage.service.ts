@@ -35,7 +35,6 @@ export class TokenStorageService {
     // replace current token with most recent token
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
-    console.log(jwt_decode(token));
     this.getTokenExpiry(token);
     this.saveUsername(token);
     this.saveUserId(token);
@@ -70,49 +69,32 @@ export class TokenStorageService {
   }
 
   saveUsername(token: any): void {
-    // DEBUGGING - REMOVE BEFORE SUBMISSION
-    console.log('Token storage - saveUsername called');
     this.decoded = jwt_decode(token);
     let username = this.decoded.name;
-    // DEBUGGING - REMOVE BEFORE SUBMISSION
-
     window.sessionStorage.removeItem(USER_NAME);
     window.sessionStorage.setItem(USER_NAME, username);
-    console.log('USERNAME AT TOKEN STORAGE' + username);
   }
 
   saveUserId(token: any): void {
-    // DEBUGGING - REMOVE BEFORE SUBMISSION
-    console.log('Token storage - saveUserId called');
     this.decoded = jwt_decode(token);
     let userId = this.decoded.id;
-    // DEBUGGING - REMOVE BEFORE SUBMISSION
-    console.log('DECODED ID ' + userId);
     window.sessionStorage.removeItem(USER_ID);
     window.sessionStorage.setItem(USER_ID, userId);
   }
 
   public get username(): any {
-    // DEBUGGING
-    console.log('getUsername method called');
     let username = window.sessionStorage.getItem(USER_NAME);
     this.userData.next(username);
-    console.log(
-      'Token storage user data value ' + JSON.stringify(this.userData)
-    );
     if (this.userData !== null) {
-      console.log('getUsername() results ' + this.userData);
       return this.userData.asObservable();
     }
   }
 
   public get userId(): any {
-    // DEBUGGING
-    console.log('getUserId method called');
+
     let userId = window.sessionStorage.getItem(USER_ID);
     this.jwtDataUserId.next(userId);
     if (this.jwtDataUserId !== null) {
-      console.log('getUserId() results ' + this.jwtDataUserId);
       return this.jwtDataUserId.asObservable();
     }
   }
