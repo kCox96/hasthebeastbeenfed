@@ -15,7 +15,7 @@ export class CateditComponent implements OnInit {
     private dataService: DataService
   ) {}
 
-  //Gets the specified cat
+  //Gets the specified cat for edit
 
   async GetTheCat() {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -25,34 +25,41 @@ export class CateditComponent implements OnInit {
     });
   }
 
+  // Deletes a feed on this page.
   DeleteFeed(index) {
     this.cat.feedingTimes.splice(index, 1);
   }
 
+  //updates the name of the cat
   UpdateName(event: any) {
     this.cat.name;
   }
 
+  //Update one of the feed times for this cat and sort so they are still in the correct order
   UpdateTime(event: any, index) {
     this.cat.feedingTimes[index].time = event.target.value;
     this.cat.feedingTimes.sort(this.CompareFeed);
   }
 
+  //update one of the feed types for this cat
   UpdateType(event: any, index) {
     this.cat.feedingTimes[index].foodType = event.target.value;
   }
 
+  //compare feed function to sort feeding times so they are in the correct order
   CompareFeed(a, b) {
     if (a.time > b.time) return 1;
     if (a.time < b.time) return -1;
     return 0;
   }
 
+  //update the cat with the current cat from this page
   UpdateCat(cat: ICat) {
     this.dataService.replaceCat(this.cat).subscribe((data) => {});
     window.location.href = './cardview';
   }
 
+  // delete this cat
   DeleteCat(catId: string) {
     if (catId) {
       this.dataService.deleteCat(catId).subscribe((data) => {});
@@ -60,6 +67,7 @@ export class CateditComponent implements OnInit {
     }
   }
 
+  //on page start get the cat
   ngOnInit(): void {
     this.GetTheCat();
   }
