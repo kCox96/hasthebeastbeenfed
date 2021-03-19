@@ -19,7 +19,7 @@ export const routes: Routes = [
   { path: 'login', pathMatch: 'full', component: LoginComponent },
   { path: 'signup', pathMatch: 'full', component: SignupComponent },
   { path: 'contactus', pathMatch: 'full', component: ContactUsComponent },
-  //Login Only
+  //Login Only Paths
   {
     path: 'account',
     pathMatch: 'full',
