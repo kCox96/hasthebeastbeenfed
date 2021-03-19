@@ -20,6 +20,7 @@ export class CardviewComponent {
     this.getTheCats();
   }
 
+  // capture scroll wheel to scroll sideways when swipe view
   onWheel(event: WheelEvent): void {
     if (window.innerWidth < 768) {
       (<Element>event.currentTarget).scrollLeft +=

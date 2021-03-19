@@ -15,6 +15,7 @@ export class CatcreateComponent implements OnInit {
     private cardview: CardviewComponent
   ) {}
 
+  //creates cat for name provided on the form 
   createCat(catname: string) {
     if (catname != null || catname != '') {
       var cat: ICat;
@@ -23,6 +24,7 @@ export class CatcreateComponent implements OnInit {
         users: [],
       };
       this.dataService.createCat(cat).subscribe((data) => {});
+      // If on create cat page then go back to the cardview if on cardview then refresh data
       if ((window.location.href = './cardview')) {
         this.cardview.getTheCats();
       } else {
