@@ -114,3 +114,13 @@ Taken from - (https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Issues
+
+There are some known issues outstanding in the prototype which would need to be fixed before going to production -
+
+https://github.com/kCox96/hasthebeastbeenfed/issues/13
+
+https://github.com/kCox96/hasthebeastbeenfed/issues/18
+
+https://github.com/kCox96/hasthebeastbeenfed/issues/21
